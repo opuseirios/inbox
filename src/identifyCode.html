@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 输入验证码</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/identifyCode.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page identifyCode-page">
+    <div class="identifyCode-container">
+        <h1 class="title">输入验证码</h1>
+        <p class="text">我们已向 <span class="tel">17337583758</span> 发送验证码短信，请查看短信并输入验证码</p>
+        <div id="verification">
+            <input type="number"  maxlength="6">
+            <div class="display-frame clearfix">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <p class="countDown"><span class="num">60</span>秒</p>
+    <a class="send" href="javascript:;">重新发送</a>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/identifyCode.js')
+</script>

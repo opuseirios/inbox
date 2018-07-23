@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 登录</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page login-page">
+<div class="login-container">
+    <h1 class="title">手机号登录</h1>
+    <div class="input-container">
+        <div class="input-box">
+            <input class="tel" type="text" placeholder="请输手机号">
+            <i class="icon-close"></i>
+        </div>
+        <div class="input-box">
+            <input class="pwd confirm-pwd" type="password" placeholder="请输入新密码(最少8位，数字+字母)">
+            <i class="eye eye-close"></i>
+        </div>
+    </div>
+    <div class="login-way">
+        <a href="./password-setting.html" class="forgetPwd">忘记密码</a>
+        <a href="./loginByCode.html" class="loginByCode">验证码登录</a>
+    </div>
+    <p class="msg"></p>
+    <a class="login" href="javascript:;">登录</a>
+    <a href="javascript:;" class="wxLogin">
+        <img src="./assets/imgs/login/wxLogin.png" alt="">
+        <p>微信快捷登录</p>
+    </a>
+</div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/login.js')
+</script>
