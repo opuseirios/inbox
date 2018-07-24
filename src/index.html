@@ -78,7 +78,7 @@
                 </li>
                 <li class="item clearfix">
                     <span class="name">INCAKE蛋糕订购</span>
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="linkIncake">
                         <i class="icon icon-cake"></i>
                     </a>
                 </li>
@@ -91,6 +91,7 @@
         </div>
         <!--内容结束-->
     </div>
+    <!--底部tab栏-->
     <div class="navBar" id="navBar">
         <ul>
             <li class="item current" data-name="home">
@@ -127,12 +128,35 @@
             </li>
         </ul>
     </div>
+    <!--城市定位-->
+    <div class="city-shade">
+        <div class="city">
+            <p class="notice">您当前的地址暂不支持订购，请选择您要配送的城市</p>
+            <i class="icon-close"></i>
+            <div class="cities">
+                <ul class="clearfix">
+                    <li class="current"><a href="javascript:;">上海市</a></li>
+                    <li><a href="javascript:;">福州市</a></li>
+                    <li><a href="javascript:;">苏州市</a></li>
+                    <li><a href="javascript:;">厦门市</a></li>
+                    <li><a href="javascript:;">无锡市</a></li>
+                    <li><a href="javascript:;">南京市</a></li>
+                    <li><a href="javascript:;">杭州市</a></li>
+                    <li><a href="javascript:;">宁波市</a></li>
+                    <li><a href="javascript:;">青岛市</a></li>
+                    <li><a href="javascript:;">扬州市</a></li>
+                    <li><a href="javascript:;">镇江市</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
 <script src="assets/plugins/LABjs/LAB.min.js"></script>
 <script>
     $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
         .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
         .script('assets/plugins/swiper/js/swiper.min.js')
         .script('assets/js/util.js')
