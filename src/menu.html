@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX|购物车</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <!--<link rel="stylesheet" href="assets/css/shopping-cart.css">-->
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page me-page">
+    <div class="me-container">
+    </div>
+    <!--底部tab栏-->
+    <div class="navBar" id="navBar">
+        <ul>
+            <li class="item" data-name="home">
+                <a href="./index.html">
+                    <i class="icon icon-home"></i>
+                    <span class="name">首页</span>
+                </a>
+            </li>
+            <li class="item current"   data-name="menu">
+                <a href="./menu.html">
+                    <i class="icon icon-menu-active"></i>
+                    <span class="name">菜单</span>
+                </a>
+            </li>
+            <li class="item"  data-name="order">
+                <a href="./order.html">
+                    <i class="icon icon-order"></i>
+                    <span class="name">订单</span>
+                </a>
+
+            </li>
+            <li class="item"  data-name="cart">
+                <a href="./shopping-cart.html">
+                    <i class="icon icon-cart"></i>
+                    <span class="name">购物车</span>
+                    <span class="count"></span>
+                </a>
+            </li>
+            <li class="item"  data-name="my">
+                <a href="./me.html">
+                    <i class="icon icon-my"></i>
+                    <span class="name">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+    // .script('assets/js/shopping-cart.js')
+</script>

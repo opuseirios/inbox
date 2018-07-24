@@ -2,12 +2,8 @@
   position: relative;
   background: #fff;
   .index-container{
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 100px;
-    right: 0;
-    overflow: hidden;
+    position: relative;
+    height: 100%;
     /*轮播图*/
     .swiper-container{
       height: 460px;

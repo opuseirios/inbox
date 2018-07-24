@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX|我的</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/me.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page me-page">
+    <div class="me-container">
+        <div class="login">
+            <a class="loginBtn" href="./login.html">
+                <img src="./assets/imgs/me/account_bg.png" alt="">
+                <p>登录</p>
+            </a>
+        </div>
+        <div class="me-content">
+            <ul>
+                <li class="item">
+                    <a href="javascript:;">
+                        <span class="name">优惠券</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;">
+                        <span class="name">卡券中心</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;">
+                        <span class="name">发票管理</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;" class="linkService">
+                        <span class="name">联系客服</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;">
+                        <span class="name">帮助反馈</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </li>
+                <li class="item advertise">
+                    <img src="./assets/imgs/me/advertising-space.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <!--底部tab栏-->
+        <div class="navBar" id="navBar">
+            <ul>
+                <li class="item" data-name="home">
+                    <a href="./index.html">
+                        <i class="icon icon-home"></i>
+                        <span class="name">首页</span>
+                    </a>
+                </li>
+                <li class="item"   data-name="menu">
+                    <a href="./menu.html">
+                        <i class="icon icon-menu"></i>
+                        <span class="name">菜单</span>
+                    </a>
+                </li>
+                <li class="item"  data-name="order">
+                    <a href="./order.html">
+                        <i class="icon icon-order"></i>
+                        <span class="name">订单</span>
+                    </a>
+
+                </li>
+                <li class="item"  data-name="cart">
+                    <a href="./shopping-cart.html">
+                        <i class="icon icon-cart"></i>
+                        <span class="name">购物车</span>
+                        <span class="count"></span>
+                    </a>
+                </li>
+                <li class="item current"  data-name="my">
+                    <a href="./me.html">
+                        <i class="icon icon-my-active"></i>
+                        <span class="name">我的</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--联系客服弹框-->
+    <div class="service-shade">
+        <div class="service">
+            <ul>
+                <li class="item">
+                    <a href="tel:400-921-5757">400-921-5757 直拨</a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;">人工服务</a>
+                </li>
+                <li class="item">
+                    <a href="javascript:;" class="cancel">取消</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/me.js')
+</script>

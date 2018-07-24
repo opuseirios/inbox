@@ -1,0 +1,107 @@
+.me-page {
+  position: relative;
+  background: #fff;
+  .me-container {
+    position: relative;
+    height: 100%;
+    .login{
+      position: relative;
+      width: 100%;
+      height: 360px;
+      background: url("./../imgs/me/bg.png") no-repeat;
+      .loginBtn{
+        position: absolute;
+        height: 200px;
+        width: 140px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        img{
+          display: block;
+          width: 140px;
+          height: 140px;
+        }
+        p{
+          font-size: 32px;
+          color: #fff;
+          margin-top: 28px;
+          text-align: center;
+        }
+      }
+    }
+    .me-content{
+      width: 100%;
+      .item{
+        box-sizing: border-box;
+        position: relative;
+        width: 100%;
+        padding: 0 20px;
+        border-bottom: 1px solid #ddd;
+        a{
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        .name{
+          display: inline-block;
+          font-size: 30px;
+          font-weight: 500;
+          line-height: 120px;
+          color: #333;
+        }
+        .icon-arrow{
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          margin-top: -10px;
+          display: inline-block;
+          width: 12px;
+          height: 20px;
+          background-size: 12px 20px;
+          background-image: url(./../imgs/me/icon_right_arror.png);
+        }
+        &.advertise{
+          border-bottom: none;
+          padding: 20px;
+        }
+      }
+    }
+  }
+}
+.service-shade{
+  position: fixed;
+  display: none;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  .service{
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    background: #f2f5f7;
+    .item{
+      background: #fff;
+      height: 100px;
+      &:first-child{
+        border-bottom: 1px solid #ddd;
+      }
+      a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        line-height: 100px;
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        font-weight: 500;
+      }
+      &:last-child{
+        margin-top: 20px;
+      }
+    }
+  }
+}
