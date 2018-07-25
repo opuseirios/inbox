@@ -5,6 +5,8 @@
         var elInput = $('#verification input'),
             elSpan = $('#verification .display-frame span');
 
+        $('#code').focus();
+
         elInput.on("keyup", function(ev){
             var ev = ev || event;
             var val = $(this).val().toString();
@@ -13,18 +15,17 @@
             for(var i = 0; i < val_arr.length; i++){
                 $(elSpan[i]).html(val_arr[i]);
             }
+            if(val.length===6){
+                /*当输入完成后*/
+            }
         })
         elInput.on("keydown", function(ev){
             var ev = ev || event;
-            console.log(ev.keyCode)
             var val = $(this).val().toString();
             if(ev.keyCode >= 48 && ev.keyCode <= 57 && val.length >= 6){
                 return false;
             }else if((ev.keyCode < 48 || ev.keyCode > 57) && ev.keyCode !=8){
                 return false;
-            }
-            if(val.length===6){
-                /*验证码是否正确，然后跳转下一个页面*/
             }
         })
 
