@@ -1,0 +1,147 @@
+@import "./variables";
+.apply-invoice-page{
+  width: 100%;
+  height: 100%;
+  .apply-invoice-container{
+    position: relative;
+    height: 100%;
+    ul{
+      padding: 20px 20px 100px 20px;
+      box-sizing: border-box;
+      height: 100%;
+      background: #f2f5f7;
+    }
+    .invoice-item{
+      width: 100%;
+      height: 190px;
+      background: #fff;
+      border-radius: 20px;
+      display: flex;
+      margin-bottom: 20px;
+      .left{
+        flex: 0 0 224px;
+        width: 224px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .price{
+          display: block;
+          font-size: 24px;
+          color: $color-main;
+          .num{
+            margin-left: 5px;
+            font-style: normal;
+            font-size: 50px;
+            font-weight: 700;
+          }
+        }
+        .text{
+          margin-top: 15px;
+          font-size: 20px;
+          color: $color-text;
+        }
+      }
+      .right{
+        flex: 1;
+        display: flex;
+        padding-left: 20px;
+        margin: 10px 0;
+        justify-content: center;
+        flex-direction: column;
+        border-right: 1px dashed #c9c9c9;
+        p{
+          font-size: 20px;
+          color: $color-text;
+          margin-top: 12px;
+          font-weight: 500;
+          &.time{
+            margin-top: 24px;
+            color: #c9c9c9;
+            font-weight: normal;
+          }
+        }
+      }
+      .check{
+        flex: 0 0 100px;
+        width: 100px;
+        position: relative;
+        .icon{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%,-50%);
+          display: inline-block;
+          width: 42px;
+          height: 42px;
+          background-size: 42px 42px;
+          &.icon-unsel{
+            background-image: url(./../imgs/apply-invoice/unsel.png);
+          }
+          &.icon-sel{
+            background-image: url(./../imgs/apply-invoice/select.png);
+          }
+        }
+      }
+    }
+
+    .total{
+      position: fixed;
+      width: 100%;
+      height: 95px;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      .price{
+        flex: 1;
+        background: #fff;
+        padding-left: 20px;
+        font-size: 22px;
+        color: $color-text-d;
+        i{
+          display: inline-block;
+          font-style: normal;
+          margin-top: 50px;
+          font-size: 16px;
+          color: $color-main;
+        }
+        .num{
+          color: $color-main;
+          font-size: 40px;
+          margin-right: 5px;
+          font-weight: 700;
+        }
+      }
+      .next{
+        display: block;
+        flex: 0 0 244px;
+        width: 244px;
+        text-align: center;
+        background: $color-main;
+        line-height: 95px;
+        font-size: 36px;
+        color: #fff;
+      }
+    }
+
+    .no-invoice{
+      position: absolute;
+      width: 410px;
+      height: 410px;
+      left: 50%;
+      top: 30%;
+      transform: translateX(-50%);
+      img{
+        width: 410px;
+        height: 360px;
+      }
+      p{
+        font-size: 30px;
+        color: $color-text;
+        font-weight: 600;
+        padding-top: 20px;
+        text-align: center;
+      }
+    }
+  }
+}

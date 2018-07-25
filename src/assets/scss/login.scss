@@ -23,7 +23,6 @@
     .input-box{
       position: relative;
       height: 135px;
-      border-bottom: 1px solid #c9c9c9;
     }
     input{
       width: 100%;
@@ -31,6 +30,10 @@
       line-height: 115px;
       font-size: 32px;
       color: #030303;
+      border-bottom: 1px solid #c9c9c9;
+      &:focus {
+        border-bottom-color: #3cdcd4;
+      }
       &::-webkit-input-placeholder{
         color: #c9c9c9;
       }

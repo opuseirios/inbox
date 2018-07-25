@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX|申请发票</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/apply-invoice.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page apply-invoice-page">
+    <div class="apply-invoice-container" id="apply-invoice">
+        <script type="text/html" id="tplInvoice">
+            {{if list.length>0}}
+            <ul>
+                {{each list as item i}}
+                <li class="invoice-item">
+                    <div class="left">
+                        <p class="price">¥<i class="num">{{item.price}}</i></p>
+                        <p class="text">可开票金额</p>
+                    </div>
+                    <div class="right">
+                        <p class="price">订单金额¥{{item.price}}</p>
+                        <p class="name">{{item.cakeName}}</p>
+                        <p class="time">{{item.time}}</p>
+                    </div>
+                    <div class="check">
+                        <i class="icon icon-unsel" type="checkbox"></i>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            <!--下一步-->
+            <div class="total">
+                <div class="price">
+                    <i class="rmb">¥</i>
+                    <span class="num">68</span>
+                    开票总额
+                </div>
+                <a href="./invoice-detail.html" class="next">下一步</a>
+            </div>
+            {{else}}
+            <div class="no-invoice">
+                <img src="./assets/imgs/apply-invoice/no-invoice.png" alt="">
+                <p>您还没有可开票的信息</p>
+            </div>
+            {{/if}}
+        </script>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/apply-invoice.js')
+</script>

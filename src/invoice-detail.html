@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX|申请发票</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/plugins/iosselect/iosSelect.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/invoice-detail.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page invoice-detail-page">
+    <div class="invoice-detail-container">
+        <ul>
+            <li class="item">
+                <span class="name">发票金额</span>
+                <span class="content">69元</span>
+            </li>
+            <li class="item">
+                <span class="name">发票明细</span>
+                <span class="content">蛋糕</span>
+            </li>
+            <li class="item">
+                <span class="name">发票抬头</span>
+                <span class="content">
+                    <a href="javascript:;" id="selectObject">
+                        <span>公司/个人</span>
+                        <i class="icon-arrow"></i>
+                    </a>
+                </span>
+            </li>
+            <li class="item company">
+                <span class="name">公司名称</span>
+                <span class="content">
+                <input type="text" placeholder="请填写公司名称">
+            </span>
+            </li>
+            <li class="item num">
+                <span class="name">发票税号</span>
+                <span class="content">
+                <input type="number" placeholder="请填写发票税号">
+            </span>
+            </li>
+            <li class="item type">
+                <span class="name">发票类型</span>
+                <span class="content">增值税电子普通发票</span>
+            </li>
+            <li class="item email">
+                <span class="name">邮箱</span>
+                <span class="content">
+                <input type="email" placeholder="请填写邮箱(用来接收电子发票)">
+            </span>
+            </li>
+        </ul>
+        <a href="javascript:;" class="submit-invoice">提交申请</a>
+    </div>
+    <div class="overlay-container"></div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/iosselect/iosSelect.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/invoice-detail.js')
+</script>

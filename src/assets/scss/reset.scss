@@ -47,6 +47,14 @@ table {
   border-spacing: 0;
 }
 
+input{
+  border: none;
+  outline: none;
+  &:focus {
+    border-bottom-color: #3cdcd4;
+  }
+}
+
 /* custom */
 
 a {
