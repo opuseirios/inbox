@@ -2,32 +2,28 @@
     $(function () {
 
         /*输入验证码*/
-        var elInput = $('#verification input'),
-            elSpan = $('#verification .display-frame span');
-
+        var str = ''
+        $('.code').on('keyup', function() {
+            var $input = $(this).next('input');
+            if($(this).val()!==''){
+                str+=$(this).val();
+                if($input.length > 0) {
+                    $input.focus();
+                }else {
+                    console.log(str)
+                    /*输入完成后*/
+                }
+            }
+        });
+        $('.code').on('keydown', function(event) {
+            var evt =  event || window.event;
+            if ($(this).val() == '' && evt.keyCode == 8){
+                // 如果为空且按下退回键
+                $(this).prev('input').focus();
+                str=str.substring(0,str.length-1);
+            }
+        });
         $('#code').focus();
-
-        elInput.on("keyup", function(ev){
-            var ev = ev || event;
-            var val = $(this).val().toString();
-            var val_arr = val.split("");
-            $(elSpan).html("");
-            for(var i = 0; i < val_arr.length; i++){
-                $(elSpan[i]).html(val_arr[i]);
-            }
-            if(val.length===6){
-                /*当输入完成后*/
-            }
-        })
-        elInput.on("keydown", function(ev){
-            var ev = ev || event;
-            var val = $(this).val().toString();
-            if(ev.keyCode >= 48 && ev.keyCode <= 57 && val.length >= 6){
-                return false;
-            }else if((ev.keyCode < 48 || ev.keyCode > 57) && ev.keyCode !=8){
-                return false;
-            }
-        })
 
         countDown();
 

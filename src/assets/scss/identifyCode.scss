@@ -1,3 +1,5 @@
+
+@import "./variables";
 .identifyCode-page {
   position: relative;
   width: 100%;
@@ -53,11 +55,18 @@
 }
 #verification input{
   z-index: 100;
-  width: 100%;
   height: 100%;
   outline: none;
-  border: none;
-
+  width: 96px;
+  border: 1px solid $color-text-d;
+  box-sizing: border-box;
+  margin-right: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size:40px;
+  &:last-child{
+    margin-right: 0;
+  }
 }
 #verification .display-frame{
   position: absolute;
