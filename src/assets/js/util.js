@@ -9,3 +9,10 @@ function pwdReg(pwd) {
     var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,}$/;
     return pwd.match(reg);
 }
+
+/*手机加密*/
+function encryptPhone(num) {
+    let head = num.slice(0,3);
+    let tag = num.slice(-3);
+    return head+'*****'+tag;
+}

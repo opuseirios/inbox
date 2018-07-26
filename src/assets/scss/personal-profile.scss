@@ -1,0 +1,82 @@
+@import "./variables";
+.personal-profile-page {
+  width: 100%;
+  height: 100%;
+  .personal-profile-container {
+    position: relative;
+    height: 100%;
+    ul{
+      height: 100%;
+      background: $color-background;
+      .item{
+        background: #fff;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        height: 100px;
+        line-height: 100px;
+        position: relative;
+        border-bottom: 1px solid $color-text-d;
+        &.avatar-line{
+          height: 120px;
+          line-height: 120px;
+        }
+        a{
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        .name{
+          float: left;
+          font-size: 30px;
+          color: $color-text;
+          font-weight: 500;
+        }
+        .content{
+          float: right;
+          height: 100%;
+          font-size: 30px;
+          padding-right: 26px;
+          color: $color-text-d;
+          font-weight: 500;
+          .avatar{
+            margin-top: 25px;
+            width: 70px;
+            height: 70px;
+          }
+            span{
+              color: $color-text-d;
+            }
+            .icon-arrow{
+              position: absolute;
+              display: inline-block;
+              width: 12px;
+              height: 20px;
+              background-size: 12px 20px;
+              background-image: url(./../imgs/personal-profile/icon-right-arrow.png);
+              right: 20px;
+              top: 50%;
+              margin-top: -10px;
+            }
+        }
+        &.changePhone{
+          border-bottom: none;
+          margin: 20px 0;
+        }
+        &.quit,&.address{
+          border-bottom: none;
+        }
+        &.quit{
+          a{
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: center;
+            font-size: 28px;
+            color: $color-text;
+          }
+        }
+      }
+    }
+  }
+}
