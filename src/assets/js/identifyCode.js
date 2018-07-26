@@ -10,8 +10,11 @@
                 if($input.length > 0) {
                     $input.focus();
                 }else {
-                    console.log(str)
-                    /*输入完成后*/
+                    if(str.length===6){
+                        /*输入完成后*/
+                        console.log(str)
+                    }
+
                 }
             }
         });
@@ -20,6 +23,8 @@
             if ($(this).val() == '' && evt.keyCode == 8){
                 // 如果为空且按下退回键
                 $(this).prev('input').focus();
+            }
+            if(evt.keyCode===8){
                 str=str.substring(0,str.length-1);
             }
         });
