@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 地址管理</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/address-management.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page address-management-page">
+    <div class="address-management-container" id="address-management">
+        <script type="text/html" id="tplAddress">
+            {{if list}}
+        <ul>
+            {{each list as item i}}
+            <li class="address-item">
+                <div class="title">
+                    <span class="name">{{item.name}}</span>
+                    <span class="tel">{{item.tel}}</span>
+                </div>
+                <p class="address">
+                    {{item.address}}
+                </p>
+                <div class="operates">
+                    <a href="javascript:;" class="edit">编辑</a>
+                    <a href="javascript:;" class="deleteAddress">删除</a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+            {{/if}}
+        </script>
+
+        <a class="add-address" href="#">
+            新建地址
+        </a>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/address-management.js')
+</script>

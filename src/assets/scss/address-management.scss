@@ -1,0 +1,70 @@
+@import "./variables";
+.address-management-page{
+  .address-management-container{
+    min-height: 100%;
+    background: $color-background;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+    .address-item{
+      background: #fff;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      .title{
+        padding-left: 20px;
+        padding-top: 40px;
+        color: $color-text;
+        line-height: 32px;
+        .name{
+          font-weight: 600;
+          font-size: 32px;
+          margin-right: 50px;
+        }
+        .tel{
+          font-weight: 600;
+          font-size: 30px;
+        }
+      }
+      .address{
+        line-height: 40px;
+        font-size: 26px;
+        color: $color-text;
+        font-weight: 500;
+        padding: 30px 20px;
+        border-bottom: 1px solid $color-text-l;
+      }
+      .operates{
+        width: 100%;
+        padding: 20px 20px 0 0;
+        box-sizing: border-box;
+        height: 100px;
+        a{
+          float: right;
+          display: block;
+          width: 120px;
+          height: 60px;
+          border-radius: 30px;
+          text-align: center;
+          line-height: 60px;
+          border:1px solid $color-text;
+          font-size: 26px;
+          color: $color-text;
+          margin-left: 20px;
+        }
+      }
+    }
+    .add-address{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      display: block;
+      height: 100px;
+      width: 100%;
+      line-height: 100px;
+      color: #fff;
+      font-size: 32px;
+      text-align: center;
+      background: linear-gradient(to right,#39d0db,#3de0d0);
+    }
+  }
+}

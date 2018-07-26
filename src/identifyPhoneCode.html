@@ -12,14 +12,13 @@
     <title>INBOX | 输入验证码</title>
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/identifyCode.css">
+    <link rel="stylesheet" href="assets/css/identifyPhoneCode.css">
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-<div class="page identifyCode-page">
-    <div class="identifyCode-container">
-        <h1 class="title">输入验证码</h1>
-        <p class="text">我们已向 <span class="tel">17337583758</span> 发送验证码短信，请查看短信并输入验证码</p>
+<div class="page identifyPhoneCode-page">
+    <div class="identifyPhoneCode-container">
+        <p class="text">更换手机后，下次登录可使用新手机号登录</p>
         <div id="verification">
             <input type="tel" class="code" maxlength="1" id="code">
             <input type="tel" class="code" maxlength="1">
@@ -28,9 +27,9 @@
             <input type="tel" class="code" maxlength="1">
             <input type="tel" class="code" maxlength="1">
         </div>
+        <p class="countDown"><span class="num">60</span>秒</p>
+        <a class="send" href="javascript:;">重新发送</a>
     </div>
-    <p class="countDown"><span class="num">60</span>秒</p>
-    <a class="send" href="javascript:;">重新发送</a>
 </div>
 </body>
 </html>
@@ -39,5 +38,5 @@
     $LAB
         .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
         .script('assets/js/util.js')
-        .script('assets/js/identifyCode.js')
+        .script('assets/js/identifyPhoneCode.js')
 </script>
