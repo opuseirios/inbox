@@ -1,0 +1,109 @@
+@import "./variables";
+
+.add-address-page{
+  .add-address-container{
+    height: 100%;
+    background: $color-background;
+    .item{
+      background: #fff;
+      padding: 0 20px;
+      height: 120px;
+      border-bottom: 1px solid $color-text-d;
+      box-sizing: border-box;
+      display: flex;
+      position: relative;
+      &:last-child{
+        border-bottom: none;
+      }
+      #selectArea{
+        flex: 1;
+        width: 100%;
+        display: flex;
+      }
+      .name{
+        flex: 0 0 170px;
+        width: 170px;
+        line-height: 120px;
+        font-size: 28px;
+        color: $color-text;
+        font-weight: 600;
+      }
+      .content{
+        margin-left: 10px;
+        flex: 1;
+        &.select{
+          line-height: 120px;
+          color: $color-text-d;
+        }
+        input{
+          width: 100%;
+          height: 100%;
+          line-height: 120px;
+          color: $color-text;
+          &::-webkit-input-placeholder{
+            color: $color-text-d;
+          }
+        }
+
+        .icon-close{
+          position: absolute;
+          display: none;
+          right: 20px;
+          top: 50%;
+          margin-top: -15px;
+          width: 30px;
+          height: 30px;
+          background-size: 30px 30px;
+          background-image: url(./../imgs/add-address/icon_close.png);
+        }
+      }
+      .icon-arrow{
+        position: absolute;
+        display: inline-block;
+        width: 12px;
+        height: 20px;
+        right: 20px;
+        top: 50%;
+        margin-top: -10px;
+        background-size: 12px 20px;
+        background-image: url('./../imgs/add-address/icon_right_arror.png');
+      }
+      .wxlogo{
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        display: block;
+        width: 40px;
+        height: 34px;
+        margin-top: -17px;
+        img{
+          width: 40px;
+          height: 34px;
+        }
+      }
+    }
+    .msg{
+      position: absolute;
+      display: none;
+      left: 50px;
+      top: 520px;
+      width: 650px;
+      text-align: center;
+      font-size: 22px;
+      color: #ff6363;
+    }
+    .saveAddress{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      display: block;
+      height: 100px;
+      width: 100%;
+      line-height: 100px;
+      color: #fff;
+      font-size: 32px;
+      text-align: center;
+      background: linear-gradient(to right,#39d0db,#3de0d0);
+    }
+  }
+}

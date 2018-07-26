@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 添加收货地址</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/plugins/iosselect/iosSelect.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/add-address.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page add-address-page">
+    <div class="add-address-container">
+        <ul>
+            <li class="item">
+                <span class="name">联系人</span>
+                <span class="content">
+                    <input type="text" placeholder="姓名">
+                </span>
+                <a href="javascript:;" class="wxlogo">
+                    <img src="./assets/imgs/add-address/wxlogo.png" alt="">
+                </a>
+            </li>
+            <li class="item">
+                <span class="name">电话</span>
+                <span class="content">
+                    <input class="tel" type="tel" placeholder="手机号码">
+                    <i class="icon-close"></i>
+                </span>
+            </li>
+            <li class="item">
+                <a href="javascript:;" id="selectArea">
+                    <span class="name">所在地区</span>
+                    <span class="content select" id="showArea">
+                        请选择
+                    </span>
+                    <i class="icon-arrow"></i>
+
+                </a>
+            </li>
+            <li class="item">
+                <span class="name">详细街道</span>
+                <span class="content">
+                    <input type="text" placeholder="街道、牌楼号等">
+                </span>
+            </li>
+            <p class="msg"></p>
+        </ul>
+        <a href="javascript:;" class="saveAddress">保存并使用</a>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
+        .script('assets/plugins/iosselect/iosSelect.js')
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/areaData.js')
+        .script('assets/js/add-address.js')
+</script>
