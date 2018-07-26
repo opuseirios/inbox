@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 卡券中心</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/card-center.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page card-center-page">
+    <div class="card-center-container">
+        <h1 class="title">兑换</h1>
+        <div class="input-container">
+            <div class="input-box">
+                <input class="card" type="text" placeholder="卡券后五位">
+                <i class="icon-close"></i>
+            </div>
+            <div class="input-box">
+                <input class="pwd" type="text" placeholder="兑换卡密码">
+                <i class="icon-close"></i>
+            </div>
+        </div>
+        <p class="msg">密码错误</p>
+        <a class="confirm" href="javascript:;">确定</a>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js')
+        .script('assets/js/card-center.js')
+</script>

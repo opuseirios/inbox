@@ -1,3 +1,4 @@
+@import "./variables";
 .me-page {
   position: relative;
   background: #fff;
@@ -48,6 +49,15 @@
           font-weight: 500;
           line-height: 120px;
           color: #333;
+        }
+        .notice{
+          position: absolute;
+          right: 50px;
+          line-height: 120px;
+          color: $color-text-l;
+          .num{
+            font-style: normal;
+          }
         }
         .icon-arrow{
           position: absolute;

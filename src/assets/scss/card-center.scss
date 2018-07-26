@@ -1,0 +1,75 @@
+@import "./variables";
+
+.card-center-page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  .card-center-container{
+    width: 650px;
+    margin: 0 auto;
+  }
+  .title{
+    font-size: 36px;
+    color: #030303;
+    padding: 60px 0;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .input-container{
+    width: 650px;
+    .input-box{
+      position: relative;
+      height: 135px;
+    }
+    input{
+      width: 100%;
+      margin-top: 20px;
+      line-height: 115px;
+      font-size: 32px;
+      color: #030303;
+      border-bottom: 1px solid #c9c9c9;
+      &:focus {
+        border-bottom-color: #3cdcd4;
+      }
+      &::-webkit-input-placeholder{
+        color: #c9c9c9;
+      }
+    }
+    .icon-close{
+      position: absolute;
+      display: none;
+      right: 0;
+      top: 50%;
+      margin-top: -4px;
+      width: 30px;
+      height: 30px;
+      background-size: 30px 30px;
+      background-image: url(./../imgs/login/icon_close.png);
+    }
+  }
+  .msg{
+    position: absolute;
+    display: none;
+    left: 50px;
+    top: 460px;
+    width: 650px;
+    text-align: center;
+    font-size: 22px;
+    color: #ff6363;
+  }
+  .confirm{
+    display: block;
+    width: 650px;
+    height: 100px;
+    margin-top: 85px;
+    background: $color-main;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 32px;
+  }
+}
