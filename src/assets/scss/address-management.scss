@@ -55,7 +55,9 @@
     }
     .add-address{
       position: fixed;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 750px;
       bottom: 0;
       display: block;
       height: 100px;
