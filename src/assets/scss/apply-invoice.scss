@@ -84,12 +84,13 @@
         }
       }
     }
-
     .total{
       position: fixed;
       width: 100%;
+      max-width: 750px;
       height: 95px;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       bottom: 0;
       display: flex;
       .price{

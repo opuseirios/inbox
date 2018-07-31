@@ -73,10 +73,12 @@
       position: fixed;
       display: block;
       width: 100%;
+      max-width: 750px;
       height: 95px;
       line-height: 95px;
       text-align: center;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       bottom: 0;
       color: #fff;
       font-size: 36px;

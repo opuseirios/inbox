@@ -10,16 +10,134 @@
     <script src="assets/plugins/lib-flexible/flexible.js"></script>
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
-    <title>INBOX|购物车</title>
+    <title>INBOX | 菜单</title>
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/plugins/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
-    <!--<link rel="stylesheet" href="assets/css/shopping-cart.css">-->
+    <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-<div class="page me-page">
-    <div class="me-container">
+<div class="page menu-page">
+    <div class="menu-container">
+        <!-- Swiper开始-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="./assets/imgs/menu/banner.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="./assets/imgs/menu/banner.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="./assets/imgs/menu/banner.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="./assets/imgs/menu/banner.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- Swiper结束-->
+        <div class="menu-content">
+            <div class="left">
+                <ul>
+                    <li data-index="0" class="item active">INBOX</li>
+                    <li data-index="1" class="item">半熟芝士</li>
+                    <li data-index="2" class="item">榴莲千层</li>
+                </ul>
+            </div>
+            <div class="right">
+                <h2 class="fixedTitle"></h2>
+                <div class="cakes">
+                    <div>
+                        <div class="category" id="inbox">
+                            <h2 class="title">INBOX  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
+                            <script type="text/html" id="tplInbox">
+                            <ul>
+                                {{each list as item i}}
+                                <li class="cake">
+                                    <div class="img">
+                                        <img src={{item.imgSrc}} alt="">
+                                    </div>
+                                    <div class="content">
+                                        <h1 class="name">{{item.name}}</h1>
+                                        <p class="en">{{item.en}}</p>
+                                        <p class="price">¥ <i class="num">{{item.price}}</i></p>
+                                        <div class="operate">
+                                            <span class="btn minus"></span>
+                                            <span class="count">0</span>
+                                            <span class="btn add"></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                            </script>
+                        </div>
+                        <div class="category" id="cheese">
+                            <h2 class="title">半熟芝士  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
+                            <script type="text/html" id="tplCheese">
+                            <ul>
+                                {{each list as item i}}
+                                <li class="cake">
+                                    <div class="img">
+                                        <img src={{item.imgSrc}} alt="">
+                                    </div>
+                                    <div class="content">
+                                        <h1 class="name">{{item.name}}</h1>
+                                        <p class="en">{{item.en}}</p>
+                                        <p class="price">¥ <i class="num">{{item.price}}</i></p>
+                                        <div class="operate">
+                                            <span class="btn minus"></span>
+                                            <span class="count">0</span>
+                                            <span class="btn add"></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                {{/each}}
+                            </ul>
+                            </script>
+                        </div>
+                        <div class="category" id="durian">
+                            <h2 class="title">榴莲千层  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
+                            <script type="text/html" id="tplDurian">
+                                <ul>
+                                    {{each list as item i}}
+                                    <li class="cake">
+                                        <div class="img">
+                                            <img src={{item.imgSrc}} alt="">
+                                        </div>
+                                        <div class="content">
+                                            <h1 class="name">{{item.name}}</h1>
+                                            <p class="en">{{item.en}}</p>
+                                            <p class="price">¥ <i class="num">{{item.price}}</i></p>
+                                            <div class="operate">
+                                                <span class="btn minus"></span>
+                                                <span class="count">0</span>
+                                                <span class="btn add"></span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
     <!--底部tab栏-->
     <div class="navBar" id="navBar">
@@ -64,8 +182,11 @@
 <script src="assets/plugins/LABjs/LAB.min.js"></script>
 <script>
     $LAB
-        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/bscroll/bscroll.min.js')
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
+        .script('assets/plugins/swiper/js/swiper.min.js')
         .script('assets/js/util.js')
         .script('assets/js/common.js')
-    // .script('assets/js/shopping-cart.js')
+    .script('assets/js/menu.js')
 </script>

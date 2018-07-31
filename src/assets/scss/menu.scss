@@ -1,0 +1,179 @@
+@import "./variables";
+.menu-page {
+  position: relative;
+  background: #fff;
+  height: 100%;
+  .menu-container {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    /*轮播图*/
+    .swiper-container {
+      height: 260px;
+      position: relative;
+      .swiper-pagination-progressbar {
+        position: absolute;
+        top: 245px;
+        left: 50px;
+        width: 650px;
+        background: rgba(255, 255, 255, .5);
+        .swiper-pagination-progressbar-fill {
+          background: #fcfcfc;
+        }
+      }
+    }
+    /*滑动部分*/
+    .menu-content{
+      background: #fff;
+      height: 100%;
+      display: flex;
+      .left{
+        flex: 0 0 160px;
+        width: 160px;
+        .item{
+          height: 100px;
+          line-height: 100px;
+          font-size: 26px;
+          color: $color-text-l;
+          text-align: center;
+          &.active{
+            position: relative;
+            background: #f5feff;
+            color: $color-text;
+            font-weight: 600;
+            &::before{
+              position: absolute;
+              height: 100%;
+              width: 5px;
+              background: #32b9c2;
+              content: '';
+              left: 0;
+              top: 0;
+            }
+          }
+        }
+      }
+      .right{
+        flex: 1;
+        position: relative;
+        .fixedTitle{
+          position: absolute;
+          background: #fff;
+          z-index: 10;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 50px;
+          line-height: 50px;
+          padding-left: 20px;
+          font-size: 22px;
+          color: $color-text;
+          font-weight: 600;
+          .text{
+            font-size: 20px;
+            color: $color-text-l;
+            margin-left: 10px;
+          }
+        }
+        .cakes{
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 100px;
+          overflow: hidden;
+
+        }
+        .category{
+          width: 100%;
+          .title{
+            height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+            font-size: 22px;
+            color: $color-text;
+            font-weight: 600;
+            .text{
+              font-size: 20px;
+              color: $color-text-l;
+              margin-left: 10px;
+            }
+          }
+          .cake{
+            padding: 25px 20px;
+            display: flex;
+            .img{
+              flex: 0 0 140px;
+              width: 140px;
+              height: 140px;
+              margin-right: 20px;
+              img{
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .content{
+              flex: 1;
+              position: relative;
+              .name{
+                font-size: 28px;
+                line-height: 50px;
+                font-weight: 600;
+                color: $color-text;
+              }
+              .en{
+                font-size: 18px;
+                line-height: 38px;
+                color: $color-text-l;
+              }
+              .price{
+                margin-top: 30px;
+                font-size: 16px;
+                font-weight: 600;
+                color: $color-text;
+                .num{
+                  font-weight: 600;
+                  color: $color-text;
+                  font-size: 28px;
+                  font-style: normal;
+                }
+              }
+              .operate{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                height: 45px;
+                .btn{
+                  display: inline-block;
+                  width: 45px;
+                  height: 45px;
+                  background-size: 45px 45px;
+                  &.add{
+                    background-image: url('./../../assets/imgs/menu/btn_add.png');
+                  }
+                  &.minus{
+                    opacity: 0;
+                    background-image: url('./../../assets/imgs/menu/btn_minus.png');
+                  }
+                }
+                .count{
+                  display: inline-block;
+                  opacity: 0;
+                  width: 45px;
+                  height: 45px;
+                  text-align: center;
+                  line-height: 45px;
+                  color: $color-text;
+                  font-size: 26px;
+                  vertical-align: top;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

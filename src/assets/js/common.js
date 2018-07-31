@@ -12,5 +12,10 @@
             var name = $(this).data('name');
             $(this).find('i').removeClass(`icon-${name}`).addClass(`icon-${name}-active`);
         })
+
+        var title = $('title').html();
+        var index = title.indexOf('|');
+        title = title.slice(index+1).trim();
+        $('body').append('<input type="hidden"  value="'+title+'">')
     })
 })(jQuery,document,window);
