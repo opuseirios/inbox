@@ -61,7 +61,7 @@
             }
             /*判断邮箱是否正确*/
             var reg = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/);
-            var emailAdd = $('.email input').html();
+            var emailAdd = $('.email input').val();
             if(!emailAdd.match(reg)){
                 $('.msg').html('您的邮箱地址填写不正确，请重新填写').show();
                 return false

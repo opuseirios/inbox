@@ -62,8 +62,8 @@
                 <div class="cakes">
                     <div>
                         <div class="category" id="inbox">
-                            <h2 class="title">INBOX  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <script type="text/html" id="tplInbox">
+                            <h2 class="title">INBOX  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <ul>
                                 {{each list as item i}}
                                 <li class="cake">
@@ -86,8 +86,8 @@
                             </script>
                         </div>
                         <div class="category" id="cheese">
-                            <h2 class="title">半熟芝士  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <script type="text/html" id="tplCheese">
+                            <h2 class="title">半熟芝士  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <ul>
                                 {{each list as item i}}
                                 <li class="cake">
@@ -110,8 +110,8 @@
                             </script>
                         </div>
                         <div class="category" id="durian">
-                            <h2 class="title">榴莲千层  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <script type="text/html" id="tplDurian">
+                            <h2 class="title">榴莲千层  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                                 <ul>
                                     {{each list as item i}}
                                     <li class="cake">
@@ -137,6 +137,87 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+    <!--详情弹框-->
+    <div class="cake-detail">
+        <div class="cake-content">
+            <i class="icon-close"></i>
+            <div class="cake-wrapper">
+                <!-- Swiper开始-->
+                <div class="swiper-container-detail">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="javascript:;">
+                                <img src="./assets/imgs/menu/detail.png" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="javascript:;">
+                                <img src="./assets/imgs/menu/detail.png" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="javascript:;">
+                                <img src="./assets/imgs/menu/detail.png" alt="">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="javascript:;">
+                                <img src="./assets/imgs/menu/detail.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- Swiper结束-->
+                <div class="detail">
+                    <h1 class="name">INBOX(至爱红丝绒)</h1>
+                    <p class="en">INBOX</p>
+                    <p class="price">¥<i class="num">69</i></p>
+                    <div class="operate">
+                        <span class="btn minus"></span>
+                        <span class="count">0</span>
+                        <span class="btn add"></span>
+                    </div>
+                </div>
+                <!--分割线-->
+                <div class="line"></div>
+                <!--评论区-->
+                <div class="comments-content">
+                    <h1 class="title">评论</h1>
+                    <div class="comments">
+                        <ul id="comments">
+                        <script id="tplComment" type="text/html">
+                            {{each list as item i}}
+                            <li class="item">
+                                <div class="avatar">
+                                    <img src="{{item.imgSrc}}" alt="">
+                                </div>
+                                <div class="content">
+                                    <p class="tel">{{item.tel}}</p>
+                                    <p class="text">{{item.comment}}</p>
+                                </div>
+                            </li>
+                            {{/each}}
+                        </script>
+                        </ul>
+                    </div>
+                </div>
+                <!--向上箭头-->
+                <div class="showAll">
+                    <div class="up"></div>
+                </div>
+                <!--按钮-->
+                <div class="btn-wrapper">
+                    <div class="btn">
+                        <a href="javascript:;" class="addCart">加入购物车</a>
+                        <a href="javascript:;" class="buyNow">立即购买</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!--底部tab栏-->

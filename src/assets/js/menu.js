@@ -113,6 +113,104 @@
                 }
             }
         })
+
+
+        /*以下为详情区域*/
+        /*点击蛋糕，出现详情*/
+        var commentsScroll = {};
+        var swiperHeight = 0;
+        var cakeClientTop = 0;
+        $('.cake').on('click',function () {
+            $('.cake-detail').fadeIn(200);
+            /*详情页的轮播图*/
+            var swiperDetail = new Swiper('.swiper-container-detail', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'progressbar',
+                },
+                loop:true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction:false
+                },
+            });
+
+            /*初始化评论*/
+            initComment();
+
+            /*初始化BScroll组件*/
+            commentsScroll = new BScroll('.comments',{
+                probeType:3,
+                click:true,
+                bounce:{
+                    top:false
+                }
+            })
+            commentsScroll.disable();
+
+            /*设置距离*/
+            swiperHeight = $('.swiper-container-detail').height()*0.8;
+
+            cakeClientTop = $('.cake-content').position().top;
+        })
+
+
+        /*点击向上按钮*/
+        $('.showAll').on('click',function () {
+            $('.cake-content').animate({top:0},200);
+            $(this).animate({opacity:0},200);
+            $('.tel').show();
+            $('.comments-content .title').show();
+            $('.btn-wrapper').animate({opacity:1},200);
+        })
+
+        $('.icon-close').on('click',function () {
+            $('.cake-detail').fadeOut(200);
+        })
+
+        var detailTouch = {};
+
+        /*滑动*/
+        $('.cake-wrapper').on('touchstart',function (e) {
+            detailTouch.startY = e.touches[0].pageY;
+            detailTouch.offsetTop = $('.cake-content').position().top;
+        })
+        $('.cake-wrapper').on('touchmove',function (e) {
+            const deltaY = e.touches[0].pageY - detailTouch.startY;
+            var cakeTop = $('.cake-content').position().top;
+            if(deltaY>0){
+                var cakeDeltaDown = Math.min(cakeClientTop,deltaY+detailTouch.offsetTop);
+                var transformTop = $(".comments ul").css("transform").replace(/[^0-9\-,]/g,'').split(',')[5];
+                if(transformTop>=-30){
+                    $('.cake-content').css({top:cakeDeltaDown+'px'});
+                }
+            }else {
+                var cakeDeltaUp = Math.max(-swiperHeight,deltaY+detailTouch.offsetTop);
+                $('.cake-content').css({top:cakeDeltaUp+'px'});
+
+                if ((deltaY+detailTouch.offsetTop) > -swiperHeight) {
+                    commentsScroll.disable();
+                } else {
+                    commentsScroll.refresh();
+                    commentsScroll.enable();
+                }
+            }
+            /*如果cake-content的top<80,触发向上按钮*/
+            if(cakeTop>=0){
+                $('.showAll').css({opacity:cakeTop/cakeClientTop});
+                $('.btn-wrapper').css({opacity:1-cakeTop/cakeClientTop});
+                $('.tel').hide();
+                $('.comments-content .title').hide();
+                $('.icon-close').css({position:'absolute'});
+            }else {
+                commentsScroll.refresh();
+                $('.tel').show();
+                $('.showAll').css({opacity:0});
+                $('.btn-wrapper').css({opacity:1});
+                $('.comments-content .title').show();
+                $('.icon-close').css({position:'fixed'});
+            }
+        })
     })
 
     /*inbox*/
@@ -255,5 +353,65 @@
         }
         var _html = template('tplDurian',inboxData);
         $('#durian').append(_html);
+    }
+
+    /*comment*/
+    function initComment() {
+        var data = {
+            list:[
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/avatar.png',
+                    tel:'137****9291',
+                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+                }
+            ]
+        }
+        var html = template('tplComment',data);
+        $('#comments').append(html);
     }
 })(jQuery,window,document);
