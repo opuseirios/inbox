@@ -41,5 +41,31 @@
             wHeight = hh;
         });
 
+        /*当填写内容的时候，msg消失*/
+        $('input').on('focus',function () {
+            $('.msg').hide();
+        })
+
+        /*提交申请之前，检查是否每一项都填写了*/
+        $('.submit-invoice').on('click',function () {
+            /*先判断是公司还是个人*/
+            if($('#selectObject').html()==='公司'){
+                if($('.company input').val()===''){
+                    $('.msg').html('您还没有填写公司名称').show();
+                    return false;
+                }
+                if($('.num input').val() === ''){
+                    $('.msg').html('您还没有填写发票税号').show();
+                    return false
+                }
+            }
+            /*判断邮箱是否正确*/
+            var reg = new RegExp(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/);
+            var emailAdd = $('.email input').html();
+            if(!emailAdd.match(reg)){
+                $('.msg').html('您的邮箱地址填写不正确，请重新填写').show();
+                return false
+            }
+        })
     })
 })(jQuery,window,document);

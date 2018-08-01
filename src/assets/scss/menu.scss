@@ -6,8 +6,9 @@
   .menu-container {
     position: fixed;
     width: 100%;
-    left: 0;
-    top: 0;
+    max-width: 750px;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%;
     /*轮播图*/
     .swiper-container {

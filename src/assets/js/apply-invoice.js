@@ -9,6 +9,7 @@
             } else {
                 $(this).removeClass("icon-sel");
             }
+            total();
         })
     })
     /*发票列表*/
@@ -35,5 +36,16 @@
         var $invoice = $('#apply-invoice');
         var _html = template('tplInvoice',data);
         $invoice.append(_html)
+    }
+
+    /*金额*/
+    function total() {
+        var totalPrice = 0;
+        var $icons = $('.icon-sel').parent().siblings('.left').find('.num');
+        $icons.each((i,item)=>{
+            var price = $(item).html();
+            totalPrice+=parseInt(price);
+        })
+        $('.total .num').html(totalPrice)
     }
 })(jQuery,window,document);

@@ -68,6 +68,13 @@
           border-bottom: none;
         }
       }
+      .msg{
+        text-align: center;
+        color: $color-sub;
+        font-size: 20px;
+        padding-top: 40px;
+        line-height: 40px;
+      }
     }
     .submit-invoice{
       position: fixed;

@@ -36,29 +36,29 @@
         $('.menu-content').on('touchstart',function (e) {
             touch.startY = e.touches[0].pageY;
             touch.offsetTop = $('.menu-container').position().top;
-
         })
         /*拖动*/
         $('.menu-content').on('touchmove',function (e) {
             const deltaY = e.touches[0].pageY - touch.startY;
-            if(deltaY<0){
-                const moveTop = Math.max(deltaY+touch.offsetTop,-imageHeight);
-                if(moveTop<=0&&moveTop>=-imageHeight){
-                    $('.menu-container').css({'top':moveTop+'px'});
+            if(deltaY<0) {
+                const moveTop = Math.max(deltaY + touch.offsetTop, -imageHeight);
+                if (moveTop <= 0 && moveTop >= -imageHeight) {
+                    $('.menu-container').css({'top': moveTop + 'px'});
                 }
-                if(touch.offsetTop>-imageHeight){
+                if ((deltaY + touch.offsetTop) > -imageHeight) {
                     bsScroll.disable();
-                }else {
+                } else {
                     bsScroll.enable();
+                    bsScroll.refresh();
                 }
-            }else {
-                var downPx = $('.cakes ul').position().top;
-                if(downPx>=0){
-                    bsScroll.disable();
-                    const moveDown = Math.min(0,deltaY+touch.offsetTop);
-                    $('.menu-container').css({'top':moveDown+'px'});
+                }else {
+                    var downPx = $('.cakes>div').position().top;
+                    if(downPx>=0){
+                        bsScroll.disable();
+                        const moveDown = Math.min(0,deltaY+touch.offsetTop);
+                        $('.menu-container').css({'top':moveDown+'px'});
+                    }
                 }
-            }
         })
         /*加减*/
             $('.add').on('click',function () {
