@@ -61,13 +61,16 @@
                 }
         })
         /*加减*/
-            $('.add').on('click',function () {
+
+            $('.add').on('click',function (e) {
+                e.stopPropagation();
                 var count = $(this).siblings('.count').html();
                 count++;
                 $(this).siblings('.minus').animate({opacity:1},200);
                 $(this).siblings('.count').animate({opacity:1},200).html(count);
             })
-            $('.minus').on('click',function () {
+            $('.minus').on('click',function (e) {
+                e.stopPropagation();
                 var count = $(this).siblings('.count').html();
                 count--;
                 if(count>0){
@@ -121,7 +124,21 @@
         var swiperHeight = 0;
         var cakeClientTop = 0;
         $('.cake').on('click',function () {
+            /*获取商品属性*/
+            var cakeName = $(this).find('.name').html();
+            var cakeEn = $(this).find('.en').html();
+            var cakePrice = $(this).find('.num').html();
+            var cakeCount = $(this).find('.count').html();
             $('.cake-detail').fadeIn(200);
+            /*给详情页赋值*/
+            $('.detail').find('.name').html(cakeName);
+            $('.detail').find('.en').html(cakeEn);
+            $('.detail').find('.num').html(cakePrice);
+            $('.detail').find('.count').html(cakeCount);
+            if(parseInt(cakeCount)>0){
+                $('.detail').find('.count').animate({opacity:1},200);
+                $('.detail').find('.minus').animate({opacity:1},200);
+            }
             /*详情页的轮播图*/
             var swiperDetail = new Swiper('.swiper-container-detail', {
                 pagination: {
@@ -354,7 +371,6 @@
         var _html = template('tplDurian',inboxData);
         $('#durian').append(_html);
     }
-
     /*comment*/
     function initComment() {
         var data = {

@@ -1,0 +1,324 @@
+@import "./variables";
+.submit-order-page{
+  width: 100%;
+  height: 100%;
+  .submit-order-container{
+    width: 100%;
+    height: 100%;
+    background: $color-background;
+    .address-container{
+      padding: 0 20px;
+      width: 100%;
+      height: 150px;
+      background: #fff;
+      box-sizing: border-box;
+      .add-address{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .icon-add{
+          width: 40px;
+          height: 40px;
+          display: inline-block;
+          background-size: 40px 40px;
+          background-image: url(./../imgs/submit-order/add_address_icon.png);
+          margin-top: 55px;
+          margin-right: 20px;
+        }
+        .text{
+          line-height: 150px;
+          font-size: 36px;
+          font-weight: 600;
+          color: $color-text;
+          display: inline-block;
+          vertical-align: top;
+        }
+        .icon-right{
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          width: 12px;
+          height: 20px;
+          background-size: 12px 20px;
+          background-image: url('./../imgs/submit-order/icon_right_arror.png');
+          margin-top: -10px;
+        }
+      }
+      .edit-address{
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .icon-address{
+          width: 35px;
+          height: 44px;
+          display: inline-block;
+          background-size: 35px 44px;
+          background-image: url(./../imgs/submit-order/address_icon.png);
+          margin-top: 50px;
+          margin-right: 20px;
+        }
+        .detail{
+          color: $color-text;
+          display: inline-block;
+          vertical-align: top;
+          .info{
+            margin-top: 40px;
+            font-size: 36px;
+            .name{
+              font-weight: 600;
+              margin-right: 50px;
+            }
+            .tel{
+              font-weight: 600;
+            }
+          }
+          .address{
+            margin-top: 20px;
+            font-size: 26px;
+            font-weight: 500;
+          }
+        }
+        .icon-right{
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          width: 12px;
+          height: 20px;
+          background-size: 12px 20px;
+          background-image: url('./../imgs/submit-order/icon_right_arror.png');
+          margin-top: -10px;
+        }
+      }
+    }
+    .order-content{
+      margin-top: 20px;
+      background: #fff;
+      margin-bottom: 120px;
+      .item{
+        padding: 40px 20px;
+        box-sizing: border-box;
+        display: flex;
+        border-bottom: 1px solid $color-background;
+        .img{
+          flex: 0 0 170px;
+          width: 170px;
+          height: 170px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .name{
+          flex: 1;
+          margin-left: 20px;
+          .cn{
+            font-size: 30px;
+            line-height: 50px;
+            color: $color-text;
+            font-weight: 600;
+          }
+          .en{
+            font-size: 18px;
+            line-height: 38px;
+            color: $color-text-l;
+          }
+        }
+        .price{
+          flex: 0 0 100px;
+          width: 100px;
+          text-align: right;
+          .now{
+            color: $color-text;
+            font-weight: 500;
+            margin-top: 16px;
+            font-size: 14px;
+            .num{
+              font-style: normal;
+              font-size: 24px;
+              font-weight: 600;
+            }
+          }
+          .old{
+            margin-top: 20px;
+            font-size: 14px;
+            color: $color-text-l;
+            .num{
+              font-style: normal;
+              font-size: 24px;
+            }
+          }
+          .count{
+            margin-top: 26px;
+            font-size: 20px;
+            line-height: 20px;
+            color: $color-text;
+            .num{
+              font-style: normal;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+      .coupon,.freight{
+        padding: 0 20px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        height: 100px;
+        border-bottom: 1px solid $color-background;
+        .name{
+          display: block;
+          float: left;
+          font-size: 30px;
+          line-height: 100px;
+          color: $color-text;
+          font-weight: 500;
+        }
+        .content{
+          display: block;
+          float: right;
+        }
+      }
+      .coupon{
+        .coupon-detail{
+          font-size: 22px;
+          color: $color-main;
+          line-height: 100px;
+          .count{
+            font-style: normal;
+          }
+          .icon-right{
+            width: 12px;
+            height: 20px;
+            display: inline-block;
+            background-size: 12px 20px;
+            background-image: url('./../imgs/submit-order/icon_right_arror.png');
+            margin-left: 15px;
+          }
+        }
+      }
+      .freight{
+        .icon-rule{
+          margin-left: 15px;
+          width: 30px;
+          display: inline-block;
+          height: 30px;
+          background-size: 30px 30px;
+          background-image: url(./../imgs/submit-order/rule_icon.png);
+          vertical-align: middle;
+        }
+        .content{
+          margin-top: 10px;
+          line-height: 90px;
+          font-size: 14px;
+          color: $color-text;
+          .num{
+            font-size: 24px;
+            color: $color-text;
+            font-weight: 600;
+            font-style: normal;
+          }
+        }
+      }
+      .summary{
+        height: 108px;
+        padding: 0 20px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        .name{
+          position: absolute;
+          right: 80px;
+          display: inline-block;
+          font-size: 26px;
+          line-height: 108px;
+          color: $color-text-l;
+        }
+        .price{
+          position: absolute;
+          right: 20px;
+          display: inline-block;
+          font-size: 14px;
+          color: $color-main;
+          line-height: 108px;
+          font-weight: 500;
+          margin-left: 24px;
+          .num{
+            font-size: 28px;
+            font-weight: 600;
+            font-style: normal;
+          }
+        }
+      }
+    }
+    .wxPay{
+      display: block;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 750px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 120px;
+      line-height: 120px;
+      font-size: 40px;
+      color: #fff;
+      background: #1aac19;
+      text-align: center;
+      font-weight: 500;
+      box-shadow: 0 0 40px  #27a426;
+      .rmb{
+        font-size: 16px;
+        font-style: normal;
+      }
+      .num{
+        font-style: normal;
+        font-size: 40px;
+      }
+    }
+  }
+  .freight-rule{
+    position: fixed;
+    z-index: 10;
+    display: none;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    .freight-content{
+      position: absolute;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding-top: 15px;
+      .title{
+        box-sizing: border-box;
+        line-height: 90px;
+        font-size: 30px;
+        color: $color-text;
+        font-weight: 700;
+        padding: 0 20px;
+      }
+      .para{
+        padding: 0 20px 50px;
+        font-size: 24px;
+        line-height: 44px;
+        color: $color-text-l;
+      }
+      .done{
+        display: block;
+        width: 100%;
+        height: 100px;
+        text-align: center;
+        color: #fff;
+        line-height: 100px;
+        font-size: 28px;
+        background: linear-gradient(to right,#39d1db,#3de1d0);
+      }
+    }
+  }
+}

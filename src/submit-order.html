@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 订单提交</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/submit-order.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page submit-order-page">
+    <div class="submit-order-container">
+        <div class="address-container">
+            <!--<a class="add-address" href="javascript:;">-->
+                <!--<span class="icon-add"></span>-->
+                <!--<p class="text">添加地址</p>-->
+                <!--<i class="icon-right"></i>-->
+            <!--</a>-->
+            <a href="javascript:;" class="edit-address">
+                <span class="icon-address"></span>
+                <div class="detail">
+                    <p class="info">
+                        <span class="name">张三</span>
+                        <span class="tel">17321283219</span>
+                    </p>
+                    <p class="address">上海市浦东新区广兰路</p>
+                </div>
+                <i class="icon-right"></i>
+            </a>
+        </div>
+        <div class="order-content">
+            <ul class="items">
+                <script type="text/html" id="tplOrder">
+                    {{each list as item i}}
+                <li class="item">
+                    <div class="img">
+                        <img src="{{item.imgSrc}}" alt="">
+                    </div>
+                    <div class="name">
+                        <p class="cn">{{item.cn}}</p>
+                        <p class="en">{{item.en}}</p>
+                    </div>
+                    <div class="price">
+                        <p class="now">¥<i class="num">{{item.price.now}}</i></p>
+                        <p class="old">¥<i class="num">{{item.price.old}}</i></p>
+                        <p class="count">×<i class="num">{{item.count}}</i></p>
+                    </div>
+                </li>
+                    {{/each}}
+                </script>
+            </ul>
+            <a class="coupon" href="javascript:;">
+                <span class="name">优惠券</span>
+                <span class="content">
+                    <span class="coupon-detail">
+                        <span class="text"><i class="count">3</i>张可用</span>
+                        <i class="icon-right"></i>
+                    </span>
+                </span>
+            </a>
+            <a class="freight" href="javascript:;">
+                <span class="name">运费<i class="icon-rule"></i></span>
+                <span class="content">¥<i class="num">15</i></span>
+            </a>
+            <div class="summary">
+                <span class="name">小计</span>
+                <span class="price">¥<i class="num">55</i></span>
+            </div>
+        </div>
+        <a href="javascript:;" class="wxPay">微信支付 <i class="rmb">¥</i><i class="num">55</i></a>
+        <!--运费弹框-->
+        <div class="freight-rule">
+            <div class="freight-content">
+                <h1 class="title">运费规则</h1>
+                <p class="para">规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则规则</p>
+                <a href="javascript:;" class="done">我知道了</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
+        .script('assets/js/util.js')
+        .script('assets/js/common.js')
+        .script('assets/js/submit-order.js')
+</script>
