@@ -14,12 +14,48 @@
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
-    <!--<link rel="stylesheet" href="assets/css/shopping-cart.css">-->
+    <link rel="stylesheet" href="assets/css/shopping-cart.css">
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-<div class="page me-page">
-    <div class="me-container">
+<div class="page shopping-cart-page">
+    <div class="shopping-cart-container">
+        <div class="banner">
+            <img src="./assets/imgs/shopping-cart/banner.png" alt="">
+        </div>
+        <div class="content">
+            <ul id="order">
+                <script type="text/html" id="tplOrder">
+                    {{each list as item i}}
+                <li class="item">
+                    <i class="check-icon icon icon-unsel"></i>
+                    <div class="detail">
+                        <div class="img">
+                            <img src="{{item.imgSrc}}" alt="">
+                        </div>
+                        <div class="name">{{item.name}}</div>
+                        <div class="price"><i class="rmb">¥</i><i class="num">{{item.price}}</i></div>
+                    </div>
+                    <div class="operate">
+                        <span class="btn minus"></span>
+                        <span class="count">{{item.count}}</span>
+                        <span class="btn add"></span>
+                    </div>
+                </li>
+                    {{/each}}
+                </script>
+            </ul>
+        </div>
+        <div class="account-wrapper">
+            <div class="check">
+                <i class="icon icon-unsel"></i>
+                <span>全选</span>
+            </div>
+            <div class="detail">
+                <span class="text">应付合计<i class="rmb">¥</i><i class="num">0</i></span>
+            </div>
+            <a href="javascript:;" class="account" id="getPay">去结算</a>
+        </div>
     </div>
     <!--底部tab栏-->
     <div class="navBar" id="navBar">
@@ -64,8 +100,9 @@
 <script src="assets/plugins/LABjs/LAB.min.js"></script>
 <script>
     $LAB
-        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
         .script('assets/js/util.js')
         .script('assets/js/common.js')
-        // .script('assets/js/shopping-cart.js')
+        .script('assets/js/shopping-cart.js')
 </script>

@@ -4,7 +4,7 @@
   background: #fff;
   height: 100%;
   .menu-container {
-    position: fixed;
+    position: absolute;
     width: 100%;
     max-width: 750px;
     left: 50%;
@@ -178,17 +178,18 @@
     }
   }
   .cake-detail{
-    position: fixed;
+    position: absolute;
     display: none;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,.5);
+    overflow: hidden;
     z-index: 100;
     .cake-content{
       background: #fff;
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       top: 80px;
@@ -327,7 +328,7 @@
           }
         }
         .showAll{
-          position: absolute;
+          position: fixed;
           background: #fff;
           bottom: 0;
           left: 0;
@@ -344,7 +345,7 @@
           }
         }
         .btn-wrapper{
-          position: absolute;
+          position: fixed;
           z-index: 10;
           bottom: 0;
           left: 0;
