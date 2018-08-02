@@ -144,6 +144,7 @@
             margin-top: 20px;
             font-size: 14px;
             color: $color-text-l;
+            text-decoration: line-through;
             .num{
               font-style: normal;
               font-size: 24px;
@@ -158,6 +159,38 @@
               font-style: normal;
               font-weight: 500;
             }
+          }
+        }
+      }
+      .activity{
+        padding: 0 20px;
+        width: 100%;
+        box-sizing: border-box;
+        height: 100px;
+        border-bottom: 1px solid $color-background;
+        background: #dbfdff;
+        i{
+          font-style: normal;
+        }
+        .name{
+          display: block;
+          float: left;
+          font-size: 26px;
+          line-height: 100px;
+          color: $color-main;
+          font-weight: 500;
+        }
+        .content{
+          display: block;
+          float: right;
+          line-height: 100px;
+          color: $color-main;
+          font-size: 24px;
+          .rmb{
+            font-size: 14px;
+          }
+          .num{
+            font-weight: 600;
           }
         }
       }
