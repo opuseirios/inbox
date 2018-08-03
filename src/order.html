@@ -14,12 +14,355 @@
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
-    <!--<link rel="stylesheet" href="assets/css/shopping-cart.css">-->
+    <link rel="stylesheet" href="assets/css/order.css">
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <body>
-<div class="page me-page">
-    <div class="me-container">
+<div class="page order-page">
+    <div class="order-container">
+        <div class="tab">
+            <div class="tab-item active" data-category="all"><span>全部</span></div>
+            <div class="tab-item" data-category="unPay"><span>待支付</span></div>
+            <div class="tab-item" data-category="unDelivery"><span>待发货</span></div>
+            <div class="tab-item" data-category="unReceive"><span>待收货</span></div>
+            <div class="tab-item" data-category="unRate"><span>待评价</span></div>
+        </div>
+        <div class="order-wrapper">
+            <ul id="all">
+                <script type="text/html" id="tplAll">
+                    {{if list.length>0}}
+                    {{each list as item i}}
+
+                <li class="item">
+                   <div class="info">
+                       <span class="orderNum">{{item.orderNum}}</span>
+                       <span class="status">{{item.status}}</span>
+                   </div>
+                    <ul>
+                        {{each item.cakes as cake j}}
+                        <li class="detail">
+                            <div class="img">
+                                <img src="{{cake.imgSrc}}" alt="">
+                            </div>
+                            <div class="name">
+                                <p class="cn">{{cake.name.cn}}</p>
+                                <p class="en">{{cake.name.en}}</p>
+                            </div>
+                            <div class="price">
+                                <p class="now">¥<i class="num">{{cake.nowPrice}}</i></p>
+                                <p class="old">¥<i class="num">{{cake.oldPrice}}</i></p>
+                                <p class="count">×<i class="num">{{cake.count}}</i></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="total">
+                        <span class="count">共<i class="num">{{item.cakes.length}}</i>件商品</span>
+                        <span class="totalPrice">总计: <i class="rmb">¥</i><i class="num">20</i></span>
+                    </div>
+                    {{if item.status === '待支付'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getPay">去付款</a>
+                    </div>
+                    {{else if item.status === '待发货'}}
+                    <div></div>
+                    {{else if item.status === '待收货'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                    </div>
+                    {{else if item.status === '待评价'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getRate">去评价</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{else if item.status === '已完成'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{/if}}
+                </li>
+                    {{/each}}
+                    {{else}}
+                    <div class="no-order">
+                        <img src="./assets/imgs/order/no-order.png" alt="">
+                        <p>您还没有相关订单</p>
+                        <a href="javascript:;">去逛逛</a>
+                    </div>
+                    {{/if}}
+                </script>
+            </ul>
+            <ul id="unPay" style="display: none">
+                <script type="text/html" id="tplUnpay">
+                    {{if list.length>0}}
+                    {{each list as item i}}
+                    {{if item.status === '待支付'}}
+                <li class="item">
+                   <div class="info">
+                       <span class="orderNum">{{item.orderNum}}</span>
+                       <span class="status">{{item.status}}</span>
+                   </div>
+                    <ul>
+                        {{each item.cakes as cake j}}
+                        <li class="detail">
+                            <div class="img">
+                                <img src="{{cake.imgSrc}}" alt="">
+                            </div>
+                            <div class="name">
+                                <p class="cn">{{cake.name.cn}}</p>
+                                <p class="en">{{cake.name.en}}</p>
+                            </div>
+                            <div class="price">
+                                <p class="now">¥<i class="num">{{cake.nowPrice}}</i></p>
+                                <p class="old">¥<i class="num">{{cake.oldPrice}}</i></p>
+                                <p class="count">×<i class="num">{{cake.count}}</i></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="total">
+                        <span class="count">共<i class="num">{{item.cakes.length}}</i>件商品</span>
+                        <span class="totalPrice">总计: <i class="rmb">¥</i><i class="num">20</i></span>
+                    </div>
+                    {{if item.status === '待支付'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getPay">去付款</a>
+                    </div>
+                    {{else if item.status === '待发货'}}
+                    <div></div>
+                    {{else if item.status === '待收货'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                    </div>
+                    {{else if item.status === '待评价'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getRate">去评价</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{else if item.status === '已完成'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{/if}}
+                </li>
+                    {{/if}}
+                    {{/each}}
+                    {{else}}
+                    <div class="no-order">
+                        <img src="./assets/imgs/order/no-order.png" alt="">
+                        <p>您还没有相关订单</p>
+                        <a href="javascript:;">去逛逛</a>
+                    </div>
+                    {{/if}}
+                </script>
+            </ul>
+            <ul id="unDelivery" style="display: none">
+                <script type="text/html" id="tplUnDelivery">
+                    {{if list.length>0}}
+                    {{each list as item i}}
+                    {{if item.status === '待发货'}}
+                <li class="item">
+                   <div class="info">
+                       <span class="orderNum">{{item.orderNum}}</span>
+                       <span class="status">{{item.status}}</span>
+                   </div>
+                    <ul>
+                        {{each item.cakes as cake j}}
+                        <li class="detail">
+                            <div class="img">
+                                <img src="{{cake.imgSrc}}" alt="">
+                            </div>
+                            <div class="name">
+                                <p class="cn">{{cake.name.cn}}</p>
+                                <p class="en">{{cake.name.en}}</p>
+                            </div>
+                            <div class="price">
+                                <p class="now">¥<i class="num">{{cake.nowPrice}}</i></p>
+                                <p class="old">¥<i class="num">{{cake.oldPrice}}</i></p>
+                                <p class="count">×<i class="num">{{cake.count}}</i></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="total">
+                        <span class="count">共<i class="num">{{item.cakes.length}}</i>件商品</span>
+                        <span class="totalPrice">总计: <i class="rmb">¥</i><i class="num">20</i></span>
+                    </div>
+                    {{if item.status === '待支付'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getPay">去付款</a>
+                    </div>
+                    {{else if item.status === '待发货'}}
+                    <div></div>
+                    {{else if item.status === '待收货'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                    </div>
+                    {{else if item.status === '待评价'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getRate">去评价</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{else if item.status === '已完成'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{/if}}
+                </li>
+                    {{/if}}
+                    {{/each}}
+                    {{else}}
+                    <div class="no-order">
+                        <img src="./assets/imgs/order/no-order.png" alt="">
+                        <p>您还没有相关订单</p>
+                        <a href="javascript:;">去逛逛</a>
+                    </div>
+                    {{/if}}
+                </script>
+            </ul>
+            <ul id="unReceive" style="display: none">
+                <script type="text/html" id="tplUnReceive">
+                    {{if list.length>0}}
+                    {{each list as item i}}
+                    {{if item.status === '待收货'}}
+                <li class="item">
+                   <div class="info">
+                       <span class="orderNum">{{item.orderNum}}</span>
+                       <span class="status">{{item.status}}</span>
+                   </div>
+                    <ul>
+                        {{each item.cakes as cake j}}
+                        <li class="detail">
+                            <div class="img">
+                                <img src="{{cake.imgSrc}}" alt="">
+                            </div>
+                            <div class="name">
+                                <p class="cn">{{cake.name.cn}}</p>
+                                <p class="en">{{cake.name.en}}</p>
+                            </div>
+                            <div class="price">
+                                <p class="now">¥<i class="num">{{cake.nowPrice}}</i></p>
+                                <p class="old">¥<i class="num">{{cake.oldPrice}}</i></p>
+                                <p class="count">×<i class="num">{{cake.count}}</i></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="total">
+                        <span class="count">共<i class="num">{{item.cakes.length}}</i>件商品</span>
+                        <span class="totalPrice">总计: <i class="rmb">¥</i><i class="num">20</i></span>
+                    </div>
+                    {{if item.status === '待支付'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getPay">去付款</a>
+                    </div>
+                    {{else if item.status === '待发货'}}
+                    <div></div>
+                    {{else if item.status === '待收货'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                    </div>
+                    {{else if item.status === '待评价'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getRate">去评价</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{else if item.status === '已完成'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{/if}}
+                </li>
+                    {{/if}}
+                    {{/each}}
+                    {{else}}
+                    <div class="no-order">
+                        <img src="./assets/imgs/order/no-order.png" alt="">
+                        <p>您还没有相关订单</p>
+                        <a href="javascript:;">去逛逛</a>
+                    </div>
+                    {{/if}}
+                </script>
+            </ul>
+            <ul id="unRate" style="display: none">
+                <script type="text/html" id="tplUnRate">
+                    {{if list.length>0}}
+                    {{each list as item i}}
+                    {{if item.status === '待评价'}}
+                <li class="item">
+                   <div class="info">
+                       <span class="orderNum">{{item.orderNum}}</span>
+                       <span class="status">{{item.status}}</span>
+                   </div>
+                    <ul>
+                        {{each item.cakes as cake j}}
+                        <li class="detail">
+                            <div class="img">
+                                <img src="{{cake.imgSrc}}" alt="">
+                            </div>
+                            <div class="name">
+                                <p class="cn">{{cake.name.cn}}</p>
+                                <p class="en">{{cake.name.en}}</p>
+                            </div>
+                            <div class="price">
+                                <p class="now">¥<i class="num">{{cake.nowPrice}}</i></p>
+                                <p class="old">¥<i class="num">{{cake.oldPrice}}</i></p>
+                                <p class="count">×<i class="num">{{cake.count}}</i></p>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="total">
+                        <span class="count">共<i class="num">{{item.cakes.length}}</i>件商品</span>
+                        <span class="totalPrice">总计: <i class="rmb">¥</i><i class="num">20</i></span>
+                    </div>
+                    {{if item.status === '待支付'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getPay">去付款</a>
+                    </div>
+                    {{else if item.status === '待发货'}}
+                    <div></div>
+                    {{else if item.status === '待收货'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                    </div>
+                    {{else if item.status === '待评价'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="blue btn getRate">去评价</a>
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{else if item.status === '已完成'}}
+                    <div class="operate">
+                        <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                        <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+                    </div>
+                    {{/if}}
+                </li>
+                    {{/if}}
+                    {{/each}}
+                    {{else}}
+                    <div class="no-order">
+                        <img src="./assets/imgs/order/no-order.png" alt="">
+                        <p>您还没有相关订单</p>
+                        <a href="javascript:;">去逛逛</a>
+                    </div>
+                    {{/if}}
+                </script>
+            </ul>
+        </div>
     </div>
     <!--底部tab栏-->
     <div class="navBar" id="navBar">
@@ -43,11 +386,10 @@
                 </a>
 
             </li>
-            <li class="item current"  data-name="cart">
+            <li class="item"  data-name="cart">
                 <a href="./shopping-cart.html">
                     <i class="icon icon-cart"></i>
                     <span class="name">购物车</span>
-                    <span class="count"></span>
                 </a>
             </li>
             <li class="item"  data-name="my">
@@ -64,8 +406,10 @@
 <script src="assets/plugins/LABjs/LAB.min.js"></script>
 <script>
     $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
         .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
-        .script('assets/js/util.js')
-        .script('assets/js/common.js')
-    // .script('assets/js/shopping-cart.js')
+        .script('assets/plugins/vconsole/vconsole.min.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
+    .script('assets/js/order.js')
 </script>

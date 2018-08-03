@@ -78,6 +78,17 @@
             }else {
             }
         })
+
+        /*计算是否增加margin-bottom*/
+        var accountTop = $('.account-wrapper').position().top;
+        var bannerHeight = $('.banner').height();
+        var splitTop = accountTop-bannerHeight;
+        var orderHeight = $('#order').height();
+        if(orderHeight>splitTop){
+            $('#order').css({'margin-bottom':'200px'})
+        }else {
+            $('#order').css({'margin-bottom':'0'})
+        }
     })
     function initOrder() {
         var data = {
@@ -129,7 +140,7 @@
                     name:'芒果白雪',
                     price:69,
                     count:4
-                }
+                },
             ]
         }
         var html = template('tplOrder',data);
