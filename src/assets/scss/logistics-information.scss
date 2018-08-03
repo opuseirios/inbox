@@ -1,0 +1,142 @@
+@import "./variables";
+.logistics-page{
+  max-width: 750px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: #f5f5f5;
+  .logistics-container{
+    .logistics-title{
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px 40px;
+      height: 180px;
+      background: #fff;
+      ul{
+        list-style: none;
+        li{
+          line-height: 48px;
+          font-size: 28px;
+          color: #bdbdbd;
+          &:first-child{
+            color: #333;
+          }
+          span{
+            &:first-child{
+              margin-right: 20px;
+            }
+            &.status{
+              color: $color-main;
+            }
+          }
+        }
+      }
+      .copyBill{
+        position: absolute;
+        display: block;
+        padding: 0 20px;
+        border-radius: 20px;
+        height: 40px;
+        border:1px solid $color-main;
+        color: $color-main;
+        line-height: 40px;
+        font-size: 28px;
+        bottom: 20px;
+        right: 40px;
+        text-align: center;
+      }
+      .copyMsg{
+        div{
+          position: absolute;
+          display: none;
+          color: #fff;
+          background: rgba(0,0,0,.7);
+          width: 120px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          bottom: 20px;
+          right: 200px;
+        }
+      }
+    }
+    .logistics-detail{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px 40px 30px;
+      background: #fff;
+      .title{
+        font-size: 28px;
+        line-height: 80px;
+        border-bottom: 1px solid #dcdcdc;
+      }
+      ul{
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 90px;
+        list-style: none;
+        margin-top: 30px;
+        li{
+          position: relative;
+          line-height: 40px;
+          font-size: 26px;
+          color: #b4b4b4;
+          padding-bottom: 80px;
+          width: 550px;
+          &.active{
+            &::before{
+              background: $color-main;
+              z-index: 1;
+            }
+            &::after{
+              position: absolute;
+              display: block;
+              top: 4px;
+              left: -71px;
+              width: 30px;
+              height: 30px;
+              background: #fff;
+              border-radius: 15px;
+              content: '';
+              border: 1px solid $color-main;
+            }
+          }
+          .line{
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            top: 10px;
+            left: -55px;
+            background: #dbdada;
+          }
+          i.tel{
+            font-style: normal;
+            color: #7cd0f7;
+          }
+          &:last-child{
+            margin-bottom: 50px;
+          }
+          &::before{
+            position: absolute;
+            display: block;
+            top: 10px;
+            left: -65px;
+            width: 20px;
+            height: 20px;
+            background: #dbdada;
+            border-radius: 10px;
+            content: '';
+          }
+        }
+      }
+      .noMsg{
+        margin-top: 30px;
+        color: #b4b4b4;
+        text-align: center;
+        font-size: 28px;
+        line-height: 50px;
+      }
+    }
+  }
+}

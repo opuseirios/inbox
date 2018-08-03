@@ -10,7 +10,7 @@
     <script src="assets/plugins/lib-flexible/flexible.js"></script>
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
-    <title>INBOX|购物车</title>
+    <title>INBOX|订单</title>
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
@@ -36,7 +36,11 @@
                 <li class="item">
                    <div class="info">
                        <span class="orderNum">{{item.orderNum}}</span>
+                       {{if item.status ==='已完成'}}
+                       <span class="status finish">{{item.status}}</span>
+                       {{else}}
                        <span class="status">{{item.status}}</span>
+                       {{/if}}
                    </div>
                     <ul>
                         {{each item.cakes as cake j}}
@@ -68,7 +72,7 @@
                     <div></div>
                     {{else if item.status === '待收货'}}
                     <div class="operate">
-                        <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                        <a href="./logistics-information.html" class="blue btn checkLogistic">查看物流</a>
                         <a href="javascript:;" class="black btn oneMore">再来一单</a>
                     </div>
                     {{else if item.status === '待评价'}}

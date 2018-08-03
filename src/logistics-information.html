@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 物流信息</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/logistics-information.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page logistics-page">
+    <div class="logistics-container">
+        <div class="logistics-title">
+            <script id="tplLogInfo" type="text/html">
+                {{each list as item i}}
+                <ul>
+                    <li>
+                        <span>物流状态：</span><span class="status">{{item.status}}</span>
+                    </li>
+                    <li>
+                        <span>物流公司：</span><span class="company">{{item.company}}</span>
+                    </li>
+                    <li>
+                        <span>物流单号：</span><span class="logBill">{{item.logBill}}</span>
+                    </li>
+                </ul>
+                {{/each}}
+            </script>
+            <a href="javascript:;" class="copyBill" data-clipboard-target=".logBill">复制单号</a>
+            <div class="copyMsg">
+                <div class="success">复制成功</div>
+                <div class="error">复制失败</div>
+            </div>
+        </div>
+        <div class="split"></div>
+        <div class="logistics-detail">
+            <div class="title">物流跟踪</div>
+            <script id="tplLogList" type="text/html">
+                {{if list.length>0}}
+                <ul>
+                    {{each list as item i}}
+                    {{if i === 0}}
+                    <li class="active">
+                        <p class="msg">{{item.msg}} </p>
+                        {{if item.time!==null}}
+                        <p class='time'>{{item.time}}</p>
+                        {{/if}}
+                        <div class="line"></div>
+                    </li>
+                    {{else if i=== list.length-1}}
+                    <li>
+                        <p class="msg">{{item.msg}}</p>
+                        {{if item.time!==null}}
+                        <p class='time'>{{item.time}}</p>
+                        {{/if}}
+                    </li>
+                    {{else}}
+                    <li>
+                        <p class="msg">{{item.msg}}</p>
+                        {{if item.time!==null}}
+                        <p class='time'>{{item.time}}</p>
+                        {{/if}}
+                        <div class="line"></div>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+                {{else}}
+                <div class="noMsg">暂无物流信息</div>
+                {{/if}}
+            </script>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/clipboard/clipboard.min.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
+        .script('assets/js/logistics-information.js')
+</script>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX|订单详情</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/order-detail.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page order-detail-page">
+    <div class="order-detail-container">
+        <script type="text/html" id="tplOrderDetail">
+            {{each list as item i}}
+            {{if item.status === '未付款'}}
+        <div class="state">
+            <h1 class="title">{{item.status}} <span class="time">{{item.timeLimit}}</span></h1>
+        </div>
+            {{else}}
+            <div class="state">
+                <h1 class="title">{{item.status}}</h1>
+            </div>
+            {{/if}}
+        <div class="split"></div>
+        <div class="address">
+            <div class="icon">
+                <i class="icon-address"></i>
+            </div>
+            <div class="content">
+                <p class="info-detail">
+                    <span class="name">{{item.address.name}}</span>
+                    <span class="tel">{{item.address.tel}}</span>
+                </p>
+                <p class="text">{{item.address.text}}</p>
+            </div>
+        </div>
+        <div class="split"></div>
+        <div class="detail">
+            <ul>
+                <li class="item">
+                    <div class="img">
+                        <img src="{{item.cake.imgSrc}}" alt="">
+                    </div>
+                    <div class="name">
+                        <p class="cn">{{item.cake.name.cn}}</p>
+                        <p class="en">{{item.cake.name.en}}</p>
+                    </div>
+                    <div class="price">
+                        <p class="now">¥<i class="num">{{item.cake.nowPrice}}</i></p>
+                        <p class="old">¥<i class="num">{{item.cake.oldPrice}}</i></p>
+                        <p class="count">×<i class="num">{{item.cake.count}}</i></p>
+                    </div>
+                </li>
+            </ul>
+            <div class="total">
+                <ul>
+                    <li class="text">
+                        <span class="name">总计</span>
+                        <span class="price"><i class="rmb">¥</i><i class="num">{{item.totalPrice}}</i></span>
+                    </li>
+                    <li class="text">
+                        <span class="name">优惠</span>
+                        <span class="price">-<i class="rmb">¥</i><i class="num">{{item.discount}}</i></span>
+                    </li>
+                    <li class="text">
+                        <span class="name">运费</span>
+                        <span class="price"><i class="rmb">¥</i><i class="num">{{item.freight}}</i></span>
+                    </li>
+                    <li class="text">
+                        <span class="name">合计</span>
+                        <span class="price sum"><i class="rmb">¥</i><i class="num">{{item.sum}}</i></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="split"></div>
+        <div class="info">
+            <p>订单编号：<span class="text orderNum">{{item.orderNum}}</span></p>
+            <p>下单时间：<span class="text time">{{item.orderTime}}</span></p>
+            {{if item.status==='未付款'}}
+            <div class="red-envelope">
+            </div>
+            {{else}}
+            <div class="red-envelope">
+                <a href="javascript:;" class="send-envelop">
+                    <img src="./assets/imgs/order-detail/red-envelope.png" alt="">
+                </a>
+            </div>
+            {{/if}}
+        </div>
+            {{if item.status === '未付款'}}
+            <div class="operate">
+                <a href="javascript:;" class="blue btn getPay">去付款</a>
+            </div>
+            {{else if item.status === '等待发货'}}
+            <div></div>
+            {{else if item.status === '已发货'}}
+            <div class="operate">
+                <a href="javascript:;" class="blue btn checkLogistic">查看物流</a>
+                <a href="javascript:;" class="black btn oneMore">再来一单</a>
+            </div>
+            {{else if item.status === '已签收'}}
+            <div class="operate">
+                <a href="javascript:;" class="blue btn getRate">去评价</a>
+                <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                <a href="./logistics-information.html" class="black btn checkLogistic">查看物流</a>
+            </div>
+            {{else if item.status === '已完成'}}
+            <div class="operate">
+                <a href="javascript:;" class="black btn oneMore">再来一单</a>
+                <a href="javascript:;" class="black btn checkLogistic">查看物流</a>
+            </div>
+            {{/if}}
+            <div class="rateShade">
+                <div class="rate-wrapper">
+                    <div class="cake">
+                        <div class="img">
+                            <img src="{{item.cake.imgSrc}}" alt="">
+                        </div>
+                        <div class="name">
+                            <h1 class="cn">{{item.cake.name.cn}}</h1>
+                            <h2 class="en">{{item.cake.name.en}}</h2>
+                        </div>
+                    </div>
+                    <i class="icon-close"></i>
+                    <div class="split"></div>
+                    <div class="comment">
+                        <textarea id="comment" placeholder="对这次消费满意吗？说说你的使用心得，给小伙伴分享一下吧！"></textarea>
+                    </div>
+                    <a href="javascript:;" class="sendComment">发表评论</a>
+                </div>
+            </div>
+            {{/each}}
+        </script>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/maxlength/jquery.plugin.min.js').wait()
+        .script('assets/plugins/maxlength/jquery.maxlength.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
+        .script('assets/js/order-detail.js')
+</script>
