@@ -1,5 +1,11 @@
 (function ($,window,document) {
     $(function () {
+        /*tab-item的num>0，style出现*/
+        $('.tab-item').each((index,item)=>{
+            if(parseInt($(item).find('.num').html())>0){
+                $(item).find('.num').fadeIn();
+            }
+        })
         /*tab栏切换*/
         $('.tab-item').on('click',function () {
             $(this).addClass('active').siblings().removeClass('active');
@@ -21,8 +27,6 @@
         var navBarTop = $('#navBar').position().top;
         var tabHeight = $('.tab').height();
         var offHeight = navBarTop-tabHeight;
-        console.log(id);
-        console.log($('#'+id).height());
         if($('#'+id).height()>offHeight){
             $('.order-wrapper').css({'margin-bottom':'100px'})
         }else {

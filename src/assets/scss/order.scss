@@ -25,8 +25,26 @@
         text-align: center;
         box-sizing: border-box;
         font-size: 32px;
+        position: relative;
         span{
           color: $color-text-l;
+        }
+        .num{
+          font-style: normal;
+          position: absolute;
+          top: 20px;
+          right: -20px;
+          width: 30px;
+          height: 30px;
+          background: #fff;
+          border: 2px solid #f95252;
+          border-radius: 50%;
+          line-height: 30px;
+          text-align: center;
+          color: #f95252;
+          font-size: 18px;
+          font-weight: 600;
+          display: none;
         }
         &.active{
           border-bottom: 5px solid $color-main;
