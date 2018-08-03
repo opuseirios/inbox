@@ -69,6 +69,21 @@
         $('.rate-wrapper').on('click',function (e) {
             e.stopPropagation();
         })
+
+        /*红包弹框*/
+        $('.send-envelop').on('click',function () {
+            $('.envelope-shade').fadeIn(200)
+        })
+        /*弹框消除*/
+        $('.icon-close').on('click',function () {
+            $('.envelope-shade').fadeOut(200);
+        })
+        $('.envelope-shade').on('click',function () {
+            $(this).fadeOut(200)
+        })
+        $('.envelope-wrapper').on('click',function (e) {
+            e.stopPropagation();
+        })
         
         /*发表评论后*/
         $('.sendComment').on('click',function () {

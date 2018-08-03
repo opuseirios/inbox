@@ -345,3 +345,63 @@
     }
   }
 }
+
+.envelope-shade{
+  position: fixed;
+  display: none;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 100;
+  .envelope-wrapper{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 730px;
+    background: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    .title{
+      padding: 50px;
+      text-align: center;
+      font-size: 36px;
+      color: $color-main;
+    }
+    .img{
+      width: 450px;
+      height: 450px;
+      margin: 0 auto;
+      img{
+        width: 100%;
+      }
+    }
+    .share-envelope{
+      margin-top: 45px;
+      display: block;
+      height: 100px;
+      width: 100%;
+      background: $color-main;
+      color: #fff;
+      line-height: 100px;
+      text-align: center;
+      font-size: 32px;
+    }
+    .icon-close{
+      position: absolute;
+      padding: 20px;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      background-size: 40px 40px;
+      background-position: 20px 20px;
+      background-image: url('./../imgs/order-detail/icon-close.png');
+      background-repeat: no-repeat;
+    }
+  }
+}
