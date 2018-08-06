@@ -68,7 +68,7 @@
                                 {{each list as item i}}
                                 <li class="cake">
                                     <div class="img">
-                                        <img src={{item.imgSrc}} alt="">
+                                        <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                     </div>
                                     <div class="content">
                                         <h1 class="name">{{item.name}}</h1>
@@ -92,7 +92,7 @@
                                 {{each list as item i}}
                                 <li class="cake">
                                     <div class="img">
-                                        <img src={{item.imgSrc}} alt="">
+                                        <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                     </div>
                                     <div class="content">
                                         <h1 class="name">{{item.name}}</h1>
@@ -116,7 +116,7 @@
                                     {{each list as item i}}
                                     <li class="cake">
                                         <div class="img">
-                                            <img src={{item.imgSrc}} alt="">
+                                            <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                         </div>
                                         <div class="content">
                                             <h1 class="name">{{item.name}}</h1>
@@ -264,10 +264,11 @@
 <script>
     $LAB
         .script('assets/plugins/artTemplate/dist/template.js').wait()
-        .script('assets/plugins/bscroll/bscroll.min.js')
-        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
-        .script('assets/plugins/swiper/js/swiper.min.js')
-        .script('assets/js/util.js')
-        .script('assets/js/common.js')
+        .script('assets/plugins/bscroll/bscroll.min.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/lazyload/lazyload.min.js').wait()
+        .script('assets/plugins/swiper/js/swiper.min.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
     .script('assets/js/menu.js')
 </script>

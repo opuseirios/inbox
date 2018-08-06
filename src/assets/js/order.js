@@ -20,6 +20,12 @@
         initUnDelivery();
         initUnReceive();
         initUnRate();
+
+        /*图片懒加载*/
+        var myLazyLoad = new LazyLoad({
+            elements_selector: ".lazy"
+        });
+
     })
 
     /*检查高度*/

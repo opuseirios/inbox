@@ -14,10 +14,18 @@
             },
         });
 
+
+
         /*蛋糕初始化*/
         initInbox();
         initCheese();
         initDurian();
+
+        /*图片懒加载*/
+        var myLazyLoad = new LazyLoad({
+            elements_selector: ".lazy"
+        });
+
 
         let touch = {};
         /*获取轮播图的高度*/
@@ -241,25 +249,25 @@
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox1.png',
+                    imgSrc:'./assets/imgs/menu/inbox1.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox1.png',
+                    imgSrc:'./assets/imgs/menu/inbox2.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox1.png',
+                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox1.png',
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
@@ -274,43 +282,43 @@
         var inboxData = {
             list:[
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox5.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox6.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox7.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox1.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox2.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.png',
+                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
@@ -325,7 +333,13 @@
         var inboxData = {
             list:[
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
+                    name:'白巧脏脏',
+                    en:'INBOX',
+                    price:69
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/inbox7.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
@@ -337,31 +351,25 @@
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
+                    imgSrc:'./assets/imgs/menu/inbox6.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
+                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
-                    name:'白巧脏脏',
-                    en:'INBOX',
-                    price:69
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
+                    imgSrc:'./assets/imgs/menu/inbox2.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69

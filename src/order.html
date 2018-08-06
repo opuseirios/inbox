@@ -46,7 +46,7 @@
                         {{each item.cakes as cake j}}
                         <li class="detail">
                             <div class="img">
-                                <img src="{{cake.imgSrc}}" alt="">
+                                <img class="lazy" data-src="{{cake.imgSrc}}" alt="">
                             </div>
                             <div class="name">
                                 <p class="cn">{{cake.name.cn}}</p>
@@ -112,7 +112,7 @@
                         {{each item.cakes as cake j}}
                         <li class="detail">
                             <div class="img">
-                                <img src="{{cake.imgSrc}}" alt="">
+                                <img class="lazy" data-src="{{cake.imgSrc}}" alt="">
                             </div>
                             <div class="name">
                                 <p class="cn">{{cake.name.cn}}</p>
@@ -179,7 +179,7 @@
                         {{each item.cakes as cake j}}
                         <li class="detail">
                             <div class="img">
-                                <img src="{{cake.imgSrc}}" alt="">
+                                <img class="lazy" data-src="{{cake.imgSrc}}" alt="">
                             </div>
                             <div class="name">
                                 <p class="cn">{{cake.name.cn}}</p>
@@ -246,7 +246,7 @@
                         {{each item.cakes as cake j}}
                         <li class="detail">
                             <div class="img">
-                                <img src="{{cake.imgSrc}}" alt="">
+                                <img class="lazy" data-src="{{cake.imgSrc}}" alt="">
                             </div>
                             <div class="name">
                                 <p class="cn">{{cake.name.cn}}</p>
@@ -313,7 +313,7 @@
                         {{each item.cakes as cake j}}
                         <li class="detail">
                             <div class="img">
-                                <img src="{{cake.imgSrc}}" alt="">
+                                <img class="lazy" data-src="{{cake.imgSrc}}" alt="">
                             </div>
                             <div class="name">
                                 <p class="cn">{{cake.name.cn}}</p>
@@ -413,6 +413,7 @@
         .script('assets/plugins/artTemplate/dist/template.js').wait()
         .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
         .script('assets/plugins/vconsole/vconsole.min.js').wait()
+        .script('assets/plugins/lazyload/lazyload.min.js').wait()
         .script('assets/js/util.js').wait()
         .script('assets/js/common.js').wait()
     .script('assets/js/order.js')
