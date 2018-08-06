@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <!-- flexible.js 建议做内联处理，请勿移动位置 -->
+    <script src="assets/plugins/lib-flexible/flexible.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <title>INBOX | 抢红包</title>
+    <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/lucky-award.css">
+    <link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page lucky-award-page">
+    <div class="lucky-award-container">
+        <div class="banner">
+            <img src="./assets/imgs/lucky-award/banner.png" alt="">
+        </div>
+        <div class="coupon-wrapper">
+            <div class="price-wrapper">
+                <p class="price"><i class="rmb">¥</i><i class="num">60</i></p>
+                <p class="condition">满200元可用</p>
+            </div>
+            <div class="info">
+                <p class="name">现金券</p>
+                <p class="time">有效期至2018-12-31</p>
+            </div>
+            <a href="javascript:;" class="toUse">去使用</a>
+        </div>
+        <div class="notice">
+            <p>红包以放置账户 <span class="tel">17346582749</span></p>
+            <p>登录网站 即可使用</p>
+        </div>
+        <div class="friend-wrapper">
+            <h1 class="title">看看朋友们手气如何</h1>
+            <ul id="friendWrapper">
+                <script type="text/html" id="tplFriend">
+                    {{each list as item i}}
+                <li class="friend">
+                    <div class="avatar">
+                        <img src="{{item.avatar}}" alt="">
+                    </div>
+                    <div class="info">
+                        <p class="tel">{{item.telNum}}</p>
+                        <p class="time">{{item.time}}</p>
+                    </div>
+                    <div class="price">
+                        <span class="num">{{item.num}}</span>元
+                    </div>
+                </li>
+                    {{/each}}
+                </script>
+            </ul>
+        </div>
+        <div class="rule-wrapper">
+            <h1 class="title">活动规则</h1>
+            <ul class="content">
+                <li class="rule">
+                    <span class="num">1、</span>
+                    <p class="para">活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</p>
+                </li>
+                <li class="rule">
+                    <span class="num">2、</span>
+                    <p class="para">活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</p>
+                </li>
+                <li class="rule">
+                    <span class="num">3、</span>
+                    <p class="para">活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/plugins/LABjs/LAB.min.js"></script>
+<script>
+    $LAB
+        .script('assets/plugins/artTemplate/dist/template.js').wait()
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
+        .script('assets/js/lucky-award.js')
+</script>
