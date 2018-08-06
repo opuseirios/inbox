@@ -61,6 +61,18 @@
             $('.msg').hide();
         })
 
+        /*键盘的弹起，控制按钮的显示和隐藏*/
+        var wHeight = window.innerHeight;   //获取初始可视窗口高度
+        window.addEventListener('resize', function(){       //监测窗口大小的变化事件
+            var hh = window.innerHeight;     //当前可视窗口高度
+            if(wHeight > hh){           //可以作为虚拟键盘弹出事件
+                $(".wxLogin").hide();    //调整可视页面的位置
+            }else{         //可以作为虚拟键盘关闭事件
+                $(".wxLogin").show();
+            }
+            wHeight = hh;
+        });
+
         /*登录*/
         $('.login').on('click',function () {
 
