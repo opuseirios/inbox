@@ -28,6 +28,10 @@
             <div class="tab-item" data-category="unRate"><span>待评价</span><i class="num">4</i></div>
         </div>
         <div class="order-wrapper">
+            <div class="loading-container">
+                <img src="./assets/imgs/order/loading.gif" alt="">
+                <p class="text">正在加载。。。</p>
+            </div>
             <ul id="all">
                 <script type="text/html" id="tplAll">
                     {{if list.length>0}}
@@ -383,9 +387,9 @@
                     <span class="name">菜单</span>
                 </a>
             </li>
-            <li class="item current"  data-name="order">
+            <li class="item"  data-name="order">
                 <a href="./order.html">
-                    <i class="icon icon-order-active"></i>
+                    <i class="icon icon-order"></i>
                     <span class="name">订单</span>
                 </a>
 

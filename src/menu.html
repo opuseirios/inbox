@@ -58,7 +58,6 @@
                 </ul>
             </div>
             <div class="right">
-                <h2 class="fixedTitle"></h2>
                 <div class="cakes">
                     <div>
                         <div class="category" id="inbox">
@@ -66,7 +65,7 @@
                             <h2 class="title">INBOX  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <ul>
                                 {{each list as item i}}
-                                <li class="cake">
+                                <li class="cake" data-id="{{item.id}}" data-imgSrc="{{item.imgSrc}}" data-name="{{item.name}}" data-price="{{item.price}}" data-en="item.en" data-count="0">
                                     <div class="img">
                                         <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                     </div>
@@ -90,7 +89,7 @@
                             <h2 class="title">半熟芝士  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                             <ul>
                                 {{each list as item i}}
-                                <li class="cake">
+                                <li class="cake" data-id="{{item.id}}" data-imgSrc="{{item.imgSrc}}" data-name="{{item.name}}" data-price="{{item.price}}" data-en="item.en" data-count="0">
                                     <div class="img">
                                         <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                     </div>
@@ -114,7 +113,7 @@
                             <h2 class="title">榴莲千层  <span class="text">大家喜欢吃，才叫真好吃</span></h2>
                                 <ul>
                                     {{each list as item i}}
-                                    <li class="cake">
+                                    <li class="cake" data-id="{{item.id}}" data-imgSrc="{{item.imgSrc}}" data-name="{{item.name}}" data-price="{{item.price}}" data-en="item.en" data-count="0">
                                         <div class="img">
                                             <img class="lazy" data-src="{{item.imgSrc}}"   alt="">
                                         </div>
@@ -177,9 +176,9 @@
                     <p class="en">INBOX</p>
                     <p class="price">¥<i class="num">69</i></p>
                     <div class="operate">
-                        <span class="btn minus"></span>
+                        <span class="btn minus1"></span>
                         <span class="count">0</span>
-                        <span class="btn add"></span>
+                        <span class="btn add1"></span>
                     </div>
                 </div>
                 <!--分割线-->
@@ -229,9 +228,9 @@
                     <span class="name">首页</span>
                 </a>
             </li>
-            <li class="item current"   data-name="menu">
+            <li class="item" data-name="menu">
                 <a href="./menu.html">
-                    <i class="icon icon-menu-active"></i>
+                    <i class="icon icon-menu"></i>
                     <span class="name">菜单</span>
                 </a>
             </li>

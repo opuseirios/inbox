@@ -136,7 +136,7 @@
   .city{
     position: absolute;
     width: 600px;
-    height: 720px;
+    height: 780px;
     left: 50%;
     top: 15%;
     transform: translate(-50%,0);
@@ -187,6 +187,19 @@
             color: #fff;
           }
         }
+      }
+      .btn{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 100px;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background: linear-gradient(to right,#38d0db,#3ce1d0);
+        font-size: 36px;
+        border-radius: 0 0 20px 20px;
       }
     }
   }

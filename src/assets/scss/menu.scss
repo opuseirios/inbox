@@ -155,7 +155,7 @@
                     background-image: url('./../../assets/imgs/menu/btn_add.png');
                   }
                   &.minus{
-                    opacity: 0;
+                    display: none;
                     background-image: url('./../../assets/imgs/menu/btn_minus.png');
                   }
                 }
@@ -258,10 +258,10 @@
               width: 45px;
               height: 45px;
               background-size: 45px 45px;
-              &.add{
+              &.add1{
                 background-image: url('./../../assets/imgs/menu/btn_add.png');
               }
-              &.minus{
+              &.minus1{
                 opacity: 0;
                 background-image: url('./../../assets/imgs/menu/btn_minus.png');
               }

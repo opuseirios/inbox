@@ -14,8 +14,6 @@
             },
         });
 
-
-
         /*蛋糕初始化*/
         initInbox();
         initCheese();
@@ -72,20 +70,25 @@
 
             $('.add').on('click',function (e) {
                 e.stopPropagation();
-                var count = $(this).siblings('.count').html();
+                var count = $(this).parents('.cake').data('count');
                 count++;
-                $(this).siblings('.minus').animate({opacity:1},200);
+                $(this).siblings('.minus').css({'display':'inline-block','width':'45px','height':'45px'})
                 $(this).siblings('.count').animate({opacity:1},200).html(count);
+                $(this).parents('.cake').data('count',count);
             })
             $('.minus').on('click',function (e) {
                 e.stopPropagation();
                 var count = $(this).siblings('.count').html();
+                if(count===0){
+                    return false;
+                }
                 count--;
+                $(this).parents('.cake').data('count',count);
                 if(count>0){
                     $(this).siblings('.count').html(count);
                 }
                 if(count===0){
-                    $(this).animate({opacity:0},200);
+                    $(this).css({'display':'none'});
                     $(this).siblings('.count').animate({opacity:0});
                     setTimeout(()=>{
                         $(this).siblings('.count').html(count);
@@ -93,14 +96,6 @@
                 }
             })
 
-        /*点击导航，控制蛋糕的滚动*/
-        $('.item').on('click',function () {
-            bsScroll.refresh()
-            $(this).addClass('active').siblings().removeClass('active');
-            var index = $(this).data('index');
-            bsScroll.scrollToElement($('.category')[index],400);
-        })
-        $('.fixedTitle').show().html($('.category').eq(0).find('.title').html());
         /*计算各个category的高度*/
         var heightColumn = [];
         var height = 0;
@@ -110,20 +105,26 @@
             height+=item.clientHeight;
             heightColumn.push(height);
         })
-        /*蛋糕滚动与导航联动*/
-        bsScroll.on('scroll',(pos)=>{
-            var scrollY = pos.y;
-            for(var i=0;i<heightColumn.length;i++){
-                if((!heightColumn[i+1])||(-scrollY>=heightColumn[i]&&-scrollY<heightColumn[i+1])){
-                    $('.item').eq(i).addClass('active').siblings().removeClass('active');
-                    if(scrollY>0){
-                        $('.fixedTitle').html($('.category').eq(0).find('.title').html()).hide();
-                    }
-                    var content = $('.category').eq(i).find('.title').html();
-                    $('.fixedTitle').show().html(content);
-                }
-            }
+        /*点击导航，控制蛋糕的滚动*/
+        $('.item').on('click',function () {
+            bsScroll.refresh()
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).data('index');
+            bsScroll.scrollToElement($('.category')[index],400);
         })
+
+        /*蛋糕滚动与导航联动*/
+       bsScroll.on('scroll',(pos)=>{
+           var scrollY = pos.y;
+           for(var i=0;i<heightColumn.length-1;i++){
+               if(-scrollY>=heightColumn[i]&&-scrollY<heightColumn[i+1]){
+                   $('.item').eq(i).addClass('active').siblings().removeClass('active');
+               }
+           }
+           if(-scrollY>heightColumn[2]*0.8){
+               $('.item').eq(2).addClass('active').siblings().removeClass('active');
+           }
+       })
 
 
         /*以下为详情区域*/
@@ -131,54 +132,72 @@
         var commentsScroll = {};
         var swiperHeight = 0;
         var cakeClientTop = 0;
+        var id = -1;
+        var count = 0;
         $('.cake').on('click',function () {
             /*获取商品属性*/
-            var cakeName = $(this).find('.name').html();
-            var cakeEn = $(this).find('.en').html();
-            var cakePrice = $(this).find('.num').html();
-            var cakeCount = $(this).find('.count').html();
+            initDetail();
+           count = $(this).data('count');
+            id = $(this).data('id');
+
             $('.cake-detail').fadeIn(200);
+
             /*给详情页赋值*/
-            $('.detail').find('.name').html(cakeName);
-            $('.detail').find('.en').html(cakeEn);
-            $('.detail').find('.num').html(cakePrice);
-            $('.detail').find('.count').html(cakeCount);
-            if(parseInt(cakeCount)>0){
+            $('.detail').find('.count').html(count);
+            if(count>0){
                 $('.detail').find('.count').animate({opacity:1},200);
-                $('.detail').find('.minus').animate({opacity:1},200);
+                $('.detail').find('.minus1').animate({opacity:1},200);
             }
-            /*详情页的轮播图*/
-            var swiperDetail = new Swiper('.swiper-container-detail', {
-                pagination: {
-                    el: '.swiper-pagination',
-                    type: 'progressbar',
-                },
-                loop:true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction:false
-                },
-            });
 
-            /*初始化评论*/
-            initComment();
-
-            /*初始化BScroll组件*/
-            commentsScroll = new BScroll('.comments',{
-                probeType:3,
-                click:true,
-                bounce:{
-                    top:false
+        })
+        $('.add1').on('click',function () {
+            count++;
+            $('.cake').each(function (index,item) {
+                if($(item).data('id')===id){
+                    $(this).data('count',count);
                 }
             })
-            commentsScroll.disable();
-
-            /*设置距离*/
-            swiperHeight = $('.swiper-container-detail').height()*0.8;
-
-            cakeClientTop = $('.cake-content').position().top;
+            if(count>0){
+                $(this).siblings('.minus1').animate({opacity:1},200);
+                $(this).siblings('.count').animate({opacity:1},200).html(count);
+            }
         })
-
+        $('.minus1').on('click',function () {
+            count--;
+            $('.cake').each(function (index,item) {
+                if($(item).data('id')===id){
+                    $(this).data('count',count);
+                }
+            })
+            if(count>0){
+                $(this).siblings('.count').html(count);
+            }
+            if(count===0){
+                $(this).animate({opacity:0},200);
+                $(this).siblings('.count').animate({opacity:0});
+                setTimeout(()=>{
+                    $(this).siblings('.count').html(count);
+                },400)
+            }
+        })
+        /*关闭*/
+        $('.icon-close').on('click',function () {
+            $('.cake-detail').fadeOut(200);
+            /*detail的高度回归0*/
+            setTimeout(()=>{
+                $('.cake-content').css({'top':'80px'})
+            },300)
+            $('.cake').each((index,item)=>{
+                var endCount = $(item).data('count');
+                    if(endCount>0){
+                        $(item).find('.count').html(endCount).animate({opacity:1},200);
+                        $(item).find('.minus').css({'display':'inline-block','width':'45px','height':'45px'})
+                    }else {
+                        $(item).find('.count').html(endCount).animate({opacity:0},200);
+                        $(item).find('.minus').css({'display':'none'})
+                    }
+            })
+        })
 
         /*点击向上按钮*/
         $('.showAll').on('click',function () {
@@ -187,10 +206,6 @@
             $('.tel').show();
             $('.comments-content .title').show();
             $('.btn-wrapper').animate({opacity:1},200);
-        })
-
-        $('.icon-close').on('click',function () {
-            $('.cake-detail').fadeOut(200);
         })
 
         var detailTouch = {};
@@ -243,31 +258,43 @@
         var inboxData = {
             list:[
                 {
+                    id:1,
                     imgSrc:'./assets/imgs/menu/inbox1.png',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
+                    id:2,
                     imgSrc:'./assets/imgs/menu/inbox1.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
+                    id:3,
                     imgSrc:'./assets/imgs/menu/inbox2.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
+                    id:4,
                     imgSrc:'./assets/imgs/menu/inbox3.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
+                    id:5,
+                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
+                    name:'至爱红丝绒',
+                    en:'INBOX',
+                    price:69
+                },
+                {
+                    id:6,
+                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
                     name:'至爱红丝绒',
                     en:'INBOX',
                     price:69
@@ -282,47 +309,33 @@
         var inboxData = {
             list:[
                 {
+                    id:7,
                     imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox5.jpg',
+                    id:8,
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox6.jpg',
+                    id:9,
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox7.jpg',
+                    id:10,
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'芒果白雪',
                     en:'INBOX',
                     price:69
                 },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox1.jpg',
-                    name:'芒果白雪',
-                    en:'INBOX',
-                    price:69
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox2.jpg',
-                    name:'芒果白雪',
-                    en:'INBOX',
-                    price:69
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
-                    name:'芒果白雪',
-                    en:'INBOX',
-                    price:69
-                }
             ]
         }
         var _html = template('tplCheese',inboxData);
@@ -333,47 +346,33 @@
         var inboxData = {
             list:[
                 {
+                    id:13,
                     imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox7.jpg',
-                    name:'白巧脏脏',
-                    en:'INBOX',
-                    price:69
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox3.png',
-                    name:'白巧脏脏',
-                    en:'INBOX',
-                    price:69
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/inbox6.jpg',
-                    name:'白巧脏脏',
-                    en:'INBOX',
-                    price:69
-                },
-                {
+                    id:14,
                     imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox3.jpg',
+                    id:15,
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
                 },
                 {
-                    imgSrc:'./assets/imgs/menu/inbox2.jpg',
+                    id:16,
+                    imgSrc:'./assets/imgs/menu/inbox4.jpg',
                     name:'白巧脏脏',
                     en:'INBOX',
                     price:69
-                }
+                },
             ]
         }
         var _html = template('tplDurian',inboxData);
@@ -437,5 +436,47 @@
         }
         var html = template('tplComment',data);
         $('#comments').append(html);
+    }
+
+    /*detail*/
+    function initDetail() {
+        var cakeName = $(this).find('.name').html();
+        var cakeEn = $(this).find('.en').html();
+        var cakePrice = $(this).find('.num').html();
+
+        $('.detail').find('.name').html(cakeName);
+        $('.detail').find('.en').html(cakeEn);
+        $('.detail').find('.num').html(cakePrice);
+
+        /*详情页的轮播图*/
+        var swiperDetail = new Swiper('.swiper-container-detail', {
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'progressbar',
+            },
+            loop:true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction:false
+            },
+        });
+
+        /*初始化评论*/
+        initComment();
+
+        /*初始化BScroll组件*/
+        commentsScroll = new BScroll('.comments',{
+            probeType:3,
+            click:true,
+            bounce:{
+                top:false
+            }
+        })
+        commentsScroll.disable();
+
+        /*设置距离*/
+        swiperHeight = $('.swiper-container-detail').height()*0.8;
+
+        cakeClientTop = $('.cake-content').position().top;
     }
 })(jQuery,window,document);
