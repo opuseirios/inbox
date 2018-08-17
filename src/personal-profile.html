@@ -13,6 +13,7 @@
     <title>INBOX | 个人资料</title>
     <link rel="stylesheet" href="assets/plugins/normalize/normalize.css">
     <link rel="stylesheet" href="assets/plugins/iosselect/iosSelect.css">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/cropper/cropper.css" />
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/common.css">
     <link rel="stylesheet" href="assets/css/personal-profile.css">
@@ -26,11 +27,13 @@
                 <span class="name">头像</span>
                 <span class="content">
                     <img class="avatar" src="./assets/imgs/personal-profile/avatar.png" alt="">
+                    <input class="inputFile" type="file" name="" id="file" value="" />
+                    <i class="icon-arrow"></i>
                 </span>
             </li>
             <li class="item">
                 <span class="name">昵称</span>
-                <span class="content">白矾</span>
+                <span class="content"><input class="userName" type="text" value="白矾"></span>
             </li>
             <li class="item">
                 <a href="javascript:;" id="selectSex">
@@ -69,7 +72,17 @@
             </li>
         </ul>
     </div>
+    <a href="javascript:;" class="saveUserName">保存</a>
     <div class="overlay-container"></div>
+
+    <!--图片裁剪-->
+    <div class="container-picture">
+        <div class="img-container">
+            <img id="image" src="assets/imgs/personal-profile/head.png" />
+        </div>
+        <a href="javascript:;" class="reupload-image">取消</a>
+        <a href="javascript:;" class="tailor">完成</a>
+    </div>
 </div>
 </body>
 </html>
@@ -77,9 +90,10 @@
 <script>
     $LAB
         .script('assets/plugins/artTemplate/dist/template.js').wait()
-        .script('assets/plugins/jquery/jquery-3.1.1.min.js')
-        .script('assets/plugins/iosselect/iosSelect.js')
-        .script('assets/js/util.js')
-        .script('assets/js/common.js')
+        .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/iosselect/iosSelect.js').wait()
+        .script('assets/plugins/cropper/cropper.js').wait()
+        .script('assets/js/util.js').wait()
+        .script('assets/js/common.js').wait()
         .script('assets/js/personal-profile.js')
 </script>

@@ -8,6 +8,43 @@
       height: 100%;
       box-sizing: border-box;
       background: $color-background;
+      &.use-ul{
+        padding-top: 100px;
+      }
+    }
+    .use-none {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 750px;
+      margin: 0 auto;
+      background: #fff;
+      font-weight: 600;
+      height: 80px;
+      line-height: 80px;
+      font-size: 28px;
+      padding: 0 60px;
+      color: $color-text;
+      box-sizing: border-box;
+      .icon {
+        position: absolute;
+        right: 50px;
+        display: inline-block;
+        top: 20px;
+        width: 40px;
+        height: 40px;
+        background-size: 40px 40px;
+        flex: 0 0 40px;
+        margin-right: 20px;
+        &.icon-unsel {
+          background-image: url('./../imgs/shopping-cart/unsel.png');
+        }
+        &.icon-sel {
+          background-image: url('./../imgs/shopping-cart/select.png');
+        }
+      }
     }
     .coupon-item{
       position: relative;
@@ -57,6 +94,7 @@
         }
         .right{
           flex: 1;
+          position: relative;
           padding-left: 60px;
           display: flex;
           flex-direction: column;
@@ -71,8 +109,25 @@
             color: $color-text-d;
             margin-top: 24px;
           }
+          .icon{
+            position: absolute;
+            right: 30px;
+            display: inline-block;
+            top: 60px;
+            width: 40px;
+            height: 40px;
+            background-size: 40px 40px;
+            flex: 0 0 40px;
+            margin-right: 20px;
+            &.icon-unsel{
+              background-image: url('./../imgs/shopping-cart/unsel.png');
+            }
+            &.icon-sel{
+              background-image: url('./../imgs/shopping-cart/select.png');
+            }
+          }
         }
-        a{
+        .toggleRules{
           position: absolute;
           padding: 20px;
           right: 20px;
@@ -113,6 +168,20 @@
           color: $color-text-d;
         }
       }
+    }
+    .saveBtn{
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 750px;
+      text-align: center;
+      bottom: 0;
+      height: 100px;
+      line-height: 100px;
+      font-size: 36px;
+      color: #fff;
+      background: linear-gradient(to right,#39d1db,#3de1d0);
     }
     .no-coupon{
       position: absolute;

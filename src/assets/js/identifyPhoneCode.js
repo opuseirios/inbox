@@ -1,5 +1,7 @@
 (function ($,window,document) {
     $(function () {
+        /*跳起键盘*/
+
 
         /*输入验证码*/
         var str = ''

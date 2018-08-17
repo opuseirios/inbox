@@ -33,6 +33,10 @@
           color: $color-text;
           display: inline-block;
           vertical-align: top;
+          &.no-address-notice{
+            color: $color-sub;
+            text-align: center;
+          }
         }
         .icon-right{
           position: absolute;
@@ -215,6 +219,11 @@
         }
       }
       .coupon{
+        position: relative;
+        .content{
+          position: absolute;
+          right: 20px;
+        }
         .coupon-detail{
           font-size: 22px;
           color: $color-main;
@@ -261,17 +270,15 @@
         width: 100%;
         box-sizing: border-box;
         position: relative;
+        text-align: right;
         .name{
-          position: absolute;
-          right: 80px;
           display: inline-block;
           font-size: 26px;
           line-height: 108px;
           color: $color-text-l;
         }
         .price{
-          position: absolute;
-          right: 20px;
+          margin-right: -35px;
           display: inline-block;
           font-size: 14px;
           color: $color-main;

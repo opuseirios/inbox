@@ -9,6 +9,88 @@
         var phoneNum = $('.tel').html();
         var newNum = encryptPhone(phoneNum);
         $('.tel').html(newNum);
+
+        //裁剪头像
+        (function() {
+            var $image = $('#image'),
+                $file = $("#file"),
+                $page = $("body"),
+                $imagesrc = $(".avatar"),
+                $picture_shade = $(".picture-shade"),
+                $picture = $(".picture");
+
+            $image.cropper({
+                aspectRatio: 1 / 1,
+                autoCropArea: 1,
+                movable: false,
+                zoomable: false,
+                rotatable: false,
+                scalable: false,
+                background: false,
+                modal: false,
+                minContainerHeight: 500
+            });
+            $page.on('click', '.inputFile', function(e) {
+                $inputImage = $(this);
+                var URL = window.URL || window.webkitURL;
+                var blobURL;
+                if (URL) {
+                    $inputImage.change(function() {
+                        var files = this.files;
+                        var file;
+                        $(".container-picture").fadeIn();
+                        if (!$image.data('cropper')) {
+                            return;
+                        }
+
+                        if (files && files.length) {
+                            file = files[0];
+
+                            if (/^image\/\w+$/.test(file.type)) {
+                                blobURL = URL.createObjectURL(file);
+                                $image.one('built.cropper', function() {
+
+                                    // Revoke when load complete
+                                    URL.revokeObjectURL(blobURL);
+                                }).cropper('reset').cropper('replace', blobURL);
+                                $inputImage.val('');
+                                // show imgcropper container
+                                //$imgCropper.show();
+                            } else {
+                                window.alert('Please choose an image file.');
+                            }
+                        }
+                    });
+                }
+            });
+
+            $(".tailor").click(function() {
+                var img = $image.cropper('getCroppedCanvas', {
+                    width: 600,
+                    height: 600
+                }).toDataURL('image/jpeg');
+                $imagesrc.attr("src", img);
+                $(".container-picture").fadeOut();
+            });
+            $(".reupload-image").click(function() {
+                $(".container-picture").fadeOut();
+            });
+
+        })();
+
+        /*修改昵称*/
+        (function () {
+            $('.userName').on('focus',function () {
+                $('.saveUserName').css({'display':'block'});
+                $('.saveUserName').on('click',function () {
+                    /*获取userName的值*/
+                    var newUserName = $('.userName').val();
+                    console.log(newUserName);
+
+                    $(this).css({'display':'none'})
+                })
+            })
+        })();
     })
 
     /*选择性别*/
@@ -135,5 +217,6 @@
                     }
                 });
         });
+
     }
 })(jQuery,window,document);

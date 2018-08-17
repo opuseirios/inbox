@@ -19,8 +19,10 @@
 <div class="page coupon-page">
     <div class="coupon-container" id="couponContainer">
         <script type="text/html" id="tplCoupon">
-            {{if list}}
-        <ul>
+            {{if use}}
+            {{if list.length>0}}
+            <div class="use-none">不使用优惠券<i class="icon icon-unsel"></i></div>
+        <ul class="use-ul">
             {{each list as item i}}
             <li class="coupon-item">
                 <div class="content">
@@ -43,6 +45,7 @@
                     <div class="right">
                         <p class="name">{{item.name}}</p>
                         <p class="time">有效期至{{item.timeLimit}}</p>
+                        <i class="icon icon-unsel"></i>
                     </div>
                     <a class="toggleRules" href="javascript:;">
                         使用规则 <i class="icon icon-down"></i>
@@ -56,11 +59,57 @@
             </li>
             {{/each}}
         </ul>
+            <a class="saveBtn" href="javascript:;">保存</a>
             {{else}}
             <div class="no-coupon">
                 <img src="./assets/imgs/coupon/no-coupon.png" alt="">
                 <p>您还没有优惠券</p>
             </div>
+            {{/if}}
+            {{else}}
+            {{if list.length>0}}
+            <ul>
+                {{each list as item i}}
+                <li class="coupon-item">
+                    <div class="content">
+                        <div class="left">
+                            {{if item.discount}}
+                            <div class="discount">
+                                <i class="num">{{item.discount}}</i>折
+                            </div>
+                            {{else}}
+                            <div class="price">
+                                ¥<i class="num">{{item.price}}</i>
+                            </div>
+                            {{if item.sender}}
+                            <div class="send">
+                                {{item.sender}}送
+                            </div>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+                        <div class="right">
+                            <p class="name">{{item.name}}</p>
+                            <p class="time">有效期至{{item.timeLimit}}</p>
+                        </div>
+                        <a class="toggleRules" href="javascript:;">
+                            使用规则 <i class="icon icon-down"></i>
+                        </a>
+                    </div>
+                    <div class="rule">
+                        <p class="para">
+                            {{item.rule}}
+                        </p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <div class="no-coupon">
+                <img src="./assets/imgs/coupon/no-coupon.png" alt="">
+                <p>您还没有优惠券</p>
+            </div>
+            {{/if}}
             {{/if}}
         </script>
     </div>

@@ -72,7 +72,7 @@
                 e.stopPropagation();
                 var count = $(this).parents('.cake').data('count');
                 count++;
-                $(this).siblings('.minus').css({'display':'inline-block','width':'45px','height':'45px'})
+                $(this).siblings('.minus').css({'display':'inline-block','width':'0.6rem','height':'0.6rem','backgroundSize':'0.6rem 0.6rem'})
                 $(this).siblings('.count').animate({opacity:1},200).html(count);
                 $(this).parents('.cake').data('count',count);
             })
@@ -112,6 +112,7 @@
             var index = $(this).data('index');
             bsScroll.scrollToElement($('.category')[index],400);
         })
+        $('.fixedTitle').show().html($('.category').eq(0).find('.title').html());
 
         /*蛋糕滚动与导航联动*/
        bsScroll.on('scroll',(pos)=>{
@@ -119,9 +120,14 @@
            for(var i=0;i<heightColumn.length-1;i++){
                if(-scrollY>=heightColumn[i]&&-scrollY<heightColumn[i+1]){
                    $('.item').eq(i).addClass('active').siblings().removeClass('active');
+                   if(scrollY>0){
+                       $('.fixedTitle').html($('.category').eq(0).find('.title').html()).hide();
+                   }
+                   var content = $('.category').eq(i).find('.title').html();
+                   $('.fixedTitle').show().html(content);
                }
            }
-           if(-scrollY>heightColumn[2]*0.8){
+           if(-scrollY>heightColumn[2]*0.7){
                $('.item').eq(2).addClass('active').siblings().removeClass('active');
            }
        })
@@ -136,11 +142,42 @@
         var count = 0;
         $('.cake').on('click',function () {
             /*获取商品属性*/
-            initDetail();
+            var cakeName = $(this).find('.name').html();
+            var cakeEn = $(this).find('.en').html();
+            var cakePrice = $(this).find('.num').html();
+
+            $('.detail').find('.name').html(cakeName);
+            $('.detail').find('.en').html(cakeEn);
+            $('.detail').find('.num').html(cakePrice);
            count = $(this).data('count');
             id = $(this).data('id');
 
             $('.cake-detail').fadeIn(200);
+
+            /*详情页的轮播图*/
+            var swiperDetail = new Swiper('.swiper-container-detail', {
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'progressbar',
+                },
+                loop:true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction:false
+                },
+            });
+
+            /*初始化评论*/
+            initComment();
+
+            /*后面的不能滚动*/
+            $('body').css({height:'100%',overflow:'hidden'});
+            $('html').css({height:'100%',overflow:'hidden'});
+
+            /*设置距离*/
+            swiperHeight = $('.swiper-container-detail').height()*0.8;
+
+            cakeClientTop = $('.cake-content').position().top;
 
             /*给详情页赋值*/
             $('.detail').find('.count').html(count);
@@ -180,6 +217,14 @@
                 },400)
             }
         })
+
+        $('.addCart').on('click',function () {
+            if(count<1){
+                $('.add1').trigger('click');
+            }
+            $('.icon-close').trigger('click')
+        })
+
         /*关闭*/
         $('.icon-close').on('click',function () {
             $('.cake-detail').fadeOut(200);
@@ -191,18 +236,30 @@
                 var endCount = $(item).data('count');
                     if(endCount>0){
                         $(item).find('.count').html(endCount).animate({opacity:1},200);
-                        $(item).find('.minus').css({'display':'inline-block','width':'45px','height':'45px'})
+                        $(item).find('.minus').css({'display':'inline-block','width':'0.6rem','height':'0.6rem','backgroundSize':'0.6rem 0.6rem'})
                     }else {
                         $(item).find('.count').html(endCount).animate({opacity:0},200);
                         $(item).find('.minus').css({'display':'none'})
                     }
             })
+
         })
+
+
+        /*初始化BScroll组件*/
+        commentsScroll = new BScroll('.comments',{
+            probeType:3,
+            click:true,
+            bounce:{
+                top:false
+            }
+        })
+        commentsScroll.disable();
 
         /*点击向上按钮*/
         $('.showAll').on('click',function () {
             $('.cake-content').animate({top:0},200);
-            $(this).animate({opacity:0},200);
+            $(this).animate({opacity:0,bottom:'-0.8rem'},200);
             $('.tel').show();
             $('.comments-content .title').show();
             $('.btn-wrapper').animate({opacity:1},200);
@@ -237,7 +294,7 @@
             }
             /*如果cake-content的top<80,触发向上按钮*/
             if(cakeTop>=0){
-                $('.showAll').css({opacity:cakeTop/cakeClientTop});
+                $('.showAll').css({opacity:cakeTop/cakeClientTop,bottom:0});
                 $('.btn-wrapper').css({opacity:1-cakeTop/cakeClientTop});
                 $('.tel').hide();
                 $('.comments-content .title').hide();
@@ -245,7 +302,7 @@
             }else {
                 commentsScroll.refresh();
                 $('.tel').show();
-                $('.showAll').css({opacity:0});
+                $('.showAll').css({opacity:0,bottom:'-0.8rem'});
                 $('.btn-wrapper').css({opacity:1});
                 $('.comments-content .title').show();
                 $('.icon-close').css({position:'fixed'});
@@ -391,46 +448,6 @@
                     imgSrc:'./assets/imgs/menu/avatar.png',
                     tel:'137****9291',
                     comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
                 }
             ]
         }
@@ -438,45 +455,4 @@
         $('#comments').append(html);
     }
 
-    /*detail*/
-    function initDetail() {
-        var cakeName = $(this).find('.name').html();
-        var cakeEn = $(this).find('.en').html();
-        var cakePrice = $(this).find('.num').html();
-
-        $('.detail').find('.name').html(cakeName);
-        $('.detail').find('.en').html(cakeEn);
-        $('.detail').find('.num').html(cakePrice);
-
-        /*详情页的轮播图*/
-        var swiperDetail = new Swiper('.swiper-container-detail', {
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'progressbar',
-            },
-            loop:true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction:false
-            },
-        });
-
-        /*初始化评论*/
-        initComment();
-
-        /*初始化BScroll组件*/
-        commentsScroll = new BScroll('.comments',{
-            probeType:3,
-            click:true,
-            bounce:{
-                top:false
-            }
-        })
-        commentsScroll.disable();
-
-        /*设置距离*/
-        swiperHeight = $('.swiper-container-detail').height()*0.8;
-
-        cakeClientTop = $('.cake-content').position().top;
-    }
 })(jQuery,window,document);
