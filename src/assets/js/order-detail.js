@@ -71,16 +71,12 @@
         })
 
         /*红包弹框*/
-        $('.send-envelop').on('click',function () {
-            $('.envelope-shade').fadeIn(200)
-        })
+
         /*弹框消除*/
         $('.icon-close').on('click',function () {
             $('.envelope-shade').fadeOut(200);
         })
-        $('.envelope-shade').on('click',function () {
-            $(this).fadeOut(200)
-        })
+
         $('.envelope-wrapper').on('click',function (e) {
             e.stopPropagation();
         })
@@ -88,6 +84,27 @@
         /*发表评论后*/
         $('.sendComment').on('click',function () {
             
+        })
+
+        /*分享朋友圈*/
+        $('.share').on('click',function (e) {
+            e.stopPropagation();
+        })
+
+        $('.send-envelop').on('click',function () {
+            $('.envelope-shade').fadeIn(200,function () {
+                $('.share').animate({'bottom':'0'},200);
+            })
+        })
+
+        $('.envelope-shade').on('click',function () {
+            $('.share').animate({'bottom':'-5.333333rem'},200,function () {
+                $('.envelope-shade').fadeOut(200)
+            });
+        })
+
+        $('.cancel').on('click',function () {
+            $('.envelope-shade').trigger('click')
         })
     }
 

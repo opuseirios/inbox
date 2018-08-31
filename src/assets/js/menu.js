@@ -168,7 +168,7 @@
             });
 
             /*初始化评论*/
-            initComment();
+            // initComment();
 
             /*后面的不能滚动*/
             $('body').css({height:'100%',overflow:'hidden'});
@@ -436,23 +436,23 @@
         $('#durian').append(_html);
     }
     /*comment*/
-    function initComment() {
-        var data = {
-            list:[
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                },
-                {
-                    imgSrc:'./assets/imgs/menu/avatar.png',
-                    tel:'137****9291',
-                    comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
-                }
-            ]
-        }
-        var html = template('tplComment',data);
-        $('#comments').append(html);
-    }
+    // function initComment() {
+    //     var data = {
+    //         list:[
+    //             {
+    //                 imgSrc:'./assets/imgs/menu/avatar.png',
+    //                 tel:'137****9291',
+    //                 comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+    //             },
+    //             {
+    //                 imgSrc:'./assets/imgs/menu/avatar.png',
+    //                 tel:'137****9291',
+    //                 comment:'味道挺好味道挺好，味道挺好味道挺好味道挺好味道好好挺好味道好好'
+    //             }
+    //         ]
+    //     }
+    //     var html = template('tplComment',data);
+    //     $('#comments').append(html);
+    // }
 
 })(jQuery,window,document);

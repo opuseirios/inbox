@@ -52,8 +52,10 @@
 
                                     // Revoke when load complete
                                     URL.revokeObjectURL(blobURL);
+
                                 }).cropper('reset').cropper('replace', blobURL);
                                 $inputImage.val('');
+                                console.log(1);
                                 // show imgcropper container
                                 //$imgCropper.show();
                             } else {
