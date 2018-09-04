@@ -176,51 +176,53 @@
                     <h1 class="name">INBOX(至爱红丝绒)</h1>
                     <p class="en">INBOX</p>
                     <p class="price">¥<i class="num">69</i></p>
-                    <div class="operate">
-                        <span class="btn minus1"></span>
-                        <span class="count">0</span>
-                        <span class="btn add1"></span>
-                    </div>
+                    <!--<div class="operate">-->
+                        <!--<span class="btn minus1"></span>-->
+                        <!--<span class="count">0</span>-->
+                        <!--<span class="btn add1"></span>-->
+                    <!--</div>-->
                 </div>
                 <!--分割线-->
                 <div class="line"></div>
                 <!--评论区-->
-                <div class="comments-content">
-                    <h1 class="title">评论</h1>
-                    <div class="comments">
-                        <ul id="comments">
-                        <script id="tplComment" type="text/html">
-                            {{each list as item i}}
-                            <li class="item">
-                                <div class="avatar">
-                                    <img src="{{item.imgSrc}}" alt="">
-                                </div>
-                                <div class="content">
-                                    <p class="tel">{{item.tel}}</p>
-                                    <p class="text">{{item.comment}}</p>
-                                </div>
-                            </li>
-                            {{/each}}
-                        </script>
-                        </ul>
-                    </div>
-                </div>
+                <!--<div class="comments-content">-->
+                    <!--<h1 class="title">评论</h1>-->
+                    <!--<div class="comments">-->
+                        <!--<ul id="comments">-->
+                        <!--<script id="tplComment" type="text/html">-->
+                            <!--{{each list as item i}}-->
+                            <!--<li class="item">-->
+                                <!--<div class="avatar">-->
+                                    <!--<img src="{{item.imgSrc}}" alt="">-->
+                                <!--</div>-->
+                                <!--<div class="content">-->
+                                    <!--<p class="tel">{{item.tel}}</p>-->
+                                    <!--<p class="text">{{item.comment}}</p>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--{{/each}}-->
+                        <!--</script>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="product-img">
-                    <img src="./assets/imgs/menu/img1.png" alt="">
-                    <img src="./assets/imgs/menu/img2.png" alt="">
-                    <img src="./assets/imgs/menu/img3.png" alt="">
+                    <script type="text/html" id="tplImg">
+                        {{each list as item i}}
+                        <img src="{{item.imgSrc}}" alt="">
+                        {{/each}}
+                    </script>
                 </div>
-                <!--向上箭头-->
-                <div class="showAll">
-                    <div class="up"></div>
-                </div>
-                <!--按钮-->
-                <div class="btn-wrapper">
-                    <div class="btn">
-                        <a href="javascript:;" class="addCart">加入购物车</a>
-                        <a href="javascript:;" class="buyNow">立即购买</a>
-                    </div>
-                </div>
+                <!--&lt;!&ndash;向上箭头&ndash;&gt;-->
+                <!--<div class="showAll">-->
+                    <!--<div class="up"></div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;按钮&ndash;&gt;-->
+                <!--<div class="btn-wrapper">-->
+                    <!--<div class="btn">-->
+                        <!--<a href="javascript:;" class="addCart">加入购物车</a>-->
+                        <!--<a href="javascript:;" class="buyNow">立即购买</a>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
 
         </div>
@@ -271,6 +273,8 @@
         .script('assets/plugins/artTemplate/dist/template.js').wait()
         .script('assets/plugins/bscroll/bscroll.min.js').wait()
         .script('assets/plugins/jquery/jquery-3.1.1.min.js').wait()
+        .script('assets/plugins/alloy_touch/alloy_touch.js').wait()
+        .script('assets/plugins/alloy_touch/transform.js').wait()
         .script('assets/plugins/lazyload/lazyload.min.js').wait()
         .script('assets/plugins/swiper/js/swiper.min.js').wait()
         .script('assets/js/util.js').wait()

@@ -155,6 +155,7 @@
             $('.cake-detail').fadeIn(200);
 
             /*详情页的轮播图*/
+            var cakeWrapperTop = $('.cake-content').position().top;
             var swiperDetail = new Swiper('.swiper-container-detail', {
                 pagination: {
                     el: '.swiper-pagination',
@@ -167,6 +168,58 @@
                 },
             });
 
+
+            var detailTouch = {};
+
+
+            var cakeWrapperHeight = $('.cake-wrapper').height()-$('.cake-content').height();
+            console.log(cakeWrapperHeight);
+            //
+            // // /*滑动*/
+            // $('.cake-wrapper').on('touchstart',function (e) {
+            //     detailTouch.startY = e.touches[0].pageY;
+            //     detailTouch.offsetTop = $('.cake-content').position().top;
+            // })
+            // $('.cake-wrapper').on('touchmove',function (e) {
+            //     const deltaY = Math.min(Math.max(e.touches[0].pageY - detailTouch.startY+detailTouch.offsetTop,-cakeWrapperHeight),cakeWrapperTop);
+            //     console.log(deltaY);
+            //     var deltaDown = Math.max(0,deltaY);
+            //     // var deltaUp = Math.min(0,deltaY);
+            //     if(deltaY>0){
+            //         $('.icon-close').css({"top":deltaY+'px'})
+            //     }else {
+            //         $('.icon-close').css({'top':deltaDown+'px'})
+            //     }
+            //     $('.cake-content').css({'top':deltaY+'px'});
+            // })
+            var target = document.querySelector('.cake-wrapper');
+            Transform(target,true);
+            var maxScroll = $('.cake-wrapper').height()-window.innerHeight+parseInt($(".cake-content").css("top"));
+            var alloyTouch = new AlloyTouch({
+                touch:'.cake-detail',
+                target:target,
+                property:'translateY',
+                min:-maxScroll,
+                max:0,
+                touchMove:function(evt,value){
+                    var top = $('.cake-wrapper').position().top;
+                    var paddingTop = parseInt($('.cake-content').css('paddingTop'));
+                    console.log(top)
+                    if(top<=paddingTop){
+                        if(top<=0){
+                            $('.icon-close').css('top',0);
+                        }else {
+                            $('.icon-close').css('top',top);
+                        }
+                    }else{
+                        $('.icon-close').css({'display':'none'});
+                        $('.icon-close').css('top','80px');
+                    }
+                },
+                animationEnd:function(value){
+                    $('.icon-close').css({'display':''});
+                } //运动结束
+            });
             /*初始化评论*/
             // initComment();
 
@@ -218,6 +271,8 @@
             }
         })
 
+        initImgs();
+
         $('.addCart').on('click',function () {
             if(count<1){
                 $('.add1').trigger('click');
@@ -246,68 +301,59 @@
         })
 
 
-        /*初始化BScroll组件*/
-        commentsScroll = new BScroll('.comments',{
-            probeType:3,
-            click:true,
-            bounce:{
-                top:false
-            }
-        })
-        commentsScroll.disable();
+        // /*初始化BScroll组件*/
+        // commentsScroll = new BScroll('.comments',{
+        //     probeType:3,
+        //     click:true,
+        //     bounce:{
+        //         top:false
+        //     }
+        // })
+        // commentsScroll.disable();
 
-        /*点击向上按钮*/
-        $('.showAll').on('click',function () {
-            $('.cake-content').animate({top:0},200);
-            $(this).animate({opacity:0,bottom:'-0.8rem'},200);
-            $('.tel').show();
-            $('.comments-content .title').show();
-            $('.btn-wrapper').animate({opacity:1},200);
-        })
+        // /*点击向上按钮*/
+        // $('.showAll').on('click',function () {
+        //     $('.cake-content').animate({top:0},200);
+        //     $(this).animate({opacity:0,bottom:'-0.8rem'},200);
+        //     $('.tel').show();
+        //     $('.comments-content .title').show();
+        //     $('.btn-wrapper').animate({opacity:1},200);
+        // })
+        //
 
-        var detailTouch = {};
+            // if(deltaY>0){
+            //     var cakeDeltaDown = Math.min(cakeClientTop,deltaY+detailTouch.offsetTop);
+            //     var transformTop = $(".comments ul").css("transform").replace(/[^0-9\-,]/g,'').split(',')[5];
+            //     if(transformTop>=-30){
+            //         $('.cake-content').css({top:cakeDeltaDown+'px'});
+            //     }
+            // }else {
+            //     var cakeDeltaUp = Math.max(-swiperHeight,deltaY+detailTouch.offsetTop);
+            //     $('.cake-content').css({top:cakeDeltaUp+'px'});
+            //
+            //     if ((deltaY+detailTouch.offsetTop) > -swiperHeight) {
+            //         commentsScroll.disable();
+            //     } else {
+            //         commentsScroll.refresh();
+            //         commentsScroll.enable();
+            //     }
+            // }
+        //     /*如果cake-content的top<80,触发向上按钮*/
+        //     if(cakeTop>=0){
+        //         $('.showAll').css({opacity:cakeTop/cakeClientTop,bottom:0});
+        //         $('.btn-wrapper').css({opacity:1-cakeTop/cakeClientTop});
+        //         $('.tel').hide();
+        //         $('.comments-content .title').hide();
+        //         $('.icon-close').css({position:'absolute'});
+        //     }else {
+        //         commentsScroll.refresh();
+        //         $('.tel').show();
+        //         $('.showAll').css({opacity:0,bottom:'-0.8rem'});
+        //         $('.btn-wrapper').css({opacity:1});
+        //         $('.comments-content .title').show();
+        //         $('.icon-close').css({position:'fixed'});
+        //     }
 
-        /*滑动*/
-        $('.cake-wrapper').on('touchstart',function (e) {
-            detailTouch.startY = e.touches[0].pageY;
-            detailTouch.offsetTop = $('.cake-content').position().top;
-        })
-        $('.cake-wrapper').on('touchmove',function (e) {
-            const deltaY = e.touches[0].pageY - detailTouch.startY;
-            var cakeTop = $('.cake-content').position().top;
-            if(deltaY>0){
-                var cakeDeltaDown = Math.min(cakeClientTop,deltaY+detailTouch.offsetTop);
-                var transformTop = $(".comments ul").css("transform").replace(/[^0-9\-,]/g,'').split(',')[5];
-                if(transformTop>=-30){
-                    $('.cake-content').css({top:cakeDeltaDown+'px'});
-                }
-            }else {
-                var cakeDeltaUp = Math.max(-swiperHeight,deltaY+detailTouch.offsetTop);
-                $('.cake-content').css({top:cakeDeltaUp+'px'});
-
-                if ((deltaY+detailTouch.offsetTop) > -swiperHeight) {
-                    commentsScroll.disable();
-                } else {
-                    commentsScroll.refresh();
-                    commentsScroll.enable();
-                }
-            }
-            /*如果cake-content的top<80,触发向上按钮*/
-            if(cakeTop>=0){
-                $('.showAll').css({opacity:cakeTop/cakeClientTop,bottom:0});
-                $('.btn-wrapper').css({opacity:1-cakeTop/cakeClientTop});
-                $('.tel').hide();
-                $('.comments-content .title').hide();
-                $('.icon-close').css({position:'absolute'});
-            }else {
-                commentsScroll.refresh();
-                $('.tel').show();
-                $('.showAll').css({opacity:0,bottom:'-0.8rem'});
-                $('.btn-wrapper').css({opacity:1});
-                $('.comments-content .title').show();
-                $('.icon-close').css({position:'fixed'});
-            }
-        })
     })
 
     /*inbox*/
@@ -454,5 +500,23 @@
     //     var html = template('tplComment',data);
     //     $('#comments').append(html);
     // }
+
+    function initImgs() {
+        var data = {
+            list:[
+                {
+                    imgSrc:'./assets/imgs/menu/img1.png',
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/img2.png',
+                },
+                {
+                    imgSrc:'./assets/imgs/menu/img3.png',
+                },
+            ]
+        }
+            var html = template('tplImg',data);
+            $('.product-img').append(html);
+    }
 
 })(jQuery,window,document);
